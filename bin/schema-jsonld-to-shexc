@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const includeComments = false
+const includeLabels = true
+const includeComments = true
 
 const fs = require('fs')
 const Ns_schemaOrg = 'http://schema.org/'
@@ -65,9 +66,9 @@ function ldToShExC (ld) {
   // generate ShExC
   const shapeDecls = Object.keys(classes).map(classId => `${shorten(classId + shapeSuffix)} ${extendStr(classes[classId])}{
   a [${shorten(classId)}] ;
-${(classProperties[classId] || []).map(p => `  ${shorten(p)} ${properties[p].valueExpr} *${comment('\n      ', properties[p])} ;\n`).join('')}}${comment(' ', classes[classId])}`)
+${(classProperties[classId] || []).map(p => `  ${shorten(p)} ${properties[p].valueExpr} *${comment('\n      ', properties[p])} ;\n`).join('')}}${comment('\n ', classes[classId])}`)
 
-  const ncDecls = Object.keys(ncs).map(ncId => `${shorten(ncId + shapeSuffix)} LITERAL${comment(' ', ncs[ncId])}`)
+  const ncDecls = Object.keys(ncs).map(ncId => `${shorten(ncId + shapeSuffix)} LITERAL${comment('\n ', ncs[ncId])}`)
 
   return prefixDecls.join('\n')
     + `\nBASE <${base}>`
@@ -86,7 +87,8 @@ ${(classProperties[classId] || []).map(p => `  ${shorten(p)} ${properties[p].val
   }
 
   function comment (lead, entry) {
-    return includeComments ? literalAnnot(' ', Ns_rdfs + 'comment', entry['rdfs:comment']) : ''
+    return (includeLabels ? literalAnnot(lead, Ns_rdfs + 'label', entry['rdfs:label']) : '')
+      + (includeComments ? literalAnnot(lead, Ns_rdfs + 'comment', entry['rdfs:comment']) : '')
   }
 
   function literalAnnot (lead, prop, annot) {
