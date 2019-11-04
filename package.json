@@ -1,0 +1,22 @@
+{
+  "name": "schema-org-shex",
+  "version": "1.0.0",
+  "description": "ShEx tools for schema.org",
+  "main": "index.js",
+  "bin": "bin/schema-jsonld-to-shexc",
+  "scripts": {
+    "gen:shexc": "./bin/schema-jsonld-to-shexc doc/schema.jsonld > doc/schema.shexc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericprud/schema-org-shex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericprud/schema-org-shex/issues"
+  },
+  "homepage": "https://github.com/ericprud/schema-org-shex#readme"
+}

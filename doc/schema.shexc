@@ -1,0 +1,4111 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+BASE <http://schema.org/>
+
+<UserLikesSh> EXTENDS @<UserInteraction> {
+  a [<UserLikes>] ;
+}
+
+<CafeOrCoffeeShopSh> EXTENDS @<FoodEstablishment> {
+  a [<CafeOrCoffeeShop>] ;
+}
+
+<FoodServiceSh> EXTENDS @<Service> {
+  a [<FoodService>] ;
+}
+
+<RecipeSh> EXTENDS @<HowTo> {
+  a [<Recipe>] ;
+  <recipeYield> @<QuantitativeValueSh> OR @<TextSh> * ;
+  <recipeCategory> @<TextSh> * ;
+  <recipeIngredient> @<TextSh> * ;
+  <recipeInstructions> @<CreativeWorkSh> OR @<TextSh> OR @<ItemListSh> * ;
+  <nutrition> @<NutritionInformationSh> * ;
+  <suitableForDiet> @<RestrictedDietSh> * ;
+  <recipeCuisine> @<TextSh> * ;
+  <cookTime> @<DurationSh> * ;
+  <cookingMethod> @<TextSh> * ;
+  <ingredients> @<TextSh> * ;
+}
+
+<VolcanoSh> EXTENDS @<Landform> {
+  a [<Volcano>] ;
+}
+
+<SportsTeamSh> EXTENDS @<SportsOrganization> {
+  a [<SportsTeam>] ;
+  <athlete> @<PersonSh> * ;
+  <coach> @<PersonSh> * ;
+}
+
+<GroceryStoreSh> EXTENDS @<Store> {
+  a [<GroceryStore>] ;
+}
+
+<DemandSh> EXTENDS @<Intangible> {
+  a [<Demand>] ;
+  <sku> @<TextSh> * ;
+  <availabilityStarts> @<DateSh> OR @<TimeSh> OR @<DateTimeSh> * ;
+  <availableDeliveryMethod> @<DeliveryMethodSh> * ;
+  <mpn> @<TextSh> * ;
+  <serialNumber> @<TextSh> * ;
+  <gtin8> @<TextSh> * ;
+  <availability> @<ItemAvailabilitySh> * ;
+  <priceSpecification> @<PriceSpecificationSh> * ;
+  <inventoryLevel> @<QuantitativeValueSh> * ;
+  <eligibleTransactionVolume> @<PriceSpecificationSh> * ;
+  <availableAtOrFrom> @<PlaceSh> * ;
+  <warranty> @<WarrantyPromiseSh> * ;
+  <eligibleQuantity> @<QuantitativeValueSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <gtin14> @<TextSh> * ;
+  <gtin13> @<TextSh> * ;
+  <gtin12> @<TextSh> * ;
+  <seller> @<PersonSh> OR @<OrganizationSh> * ;
+  <deliveryLeadTime> @<QuantitativeValueSh> * ;
+  <availabilityEnds> @<DateTimeSh> OR @<TimeSh> OR @<DateSh> * ;
+  <includesObject> @<TypeAndQuantityNodeSh> * ;
+  <businessFunction> @<BusinessFunctionSh> * ;
+  <eligibleCustomerType> @<BusinessEntityTypeSh> * ;
+  <itemCondition> @<OfferItemConditionSh> * ;
+  <itemOffered> @<ServiceSh> OR @<ProductSh> * ;
+  <eligibleDuration> @<QuantitativeValueSh> * ;
+  <acceptedPaymentMethod> @<LoanOrCreditSh> OR @<PaymentMethodSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+  <eligibleRegion> @<PlaceSh> OR @<TextSh> OR @<GeoShapeSh> * ;
+  <advanceBookingRequirement> @<QuantitativeValueSh> * ;
+}
+
+<AboutPageSh> EXTENDS @<WebPage> {
+  a [<AboutPage>] ;
+}
+
+<ExerciseActionSh> EXTENDS @<PlayAction> {
+  a [<ExerciseAction>] ;
+  <course> @<PlaceSh> * ;
+  <sportsTeam> @<SportsTeamSh> * ;
+  <sportsEvent> @<SportsEventSh> * ;
+  <distance> @<DistanceSh> * ;
+  <opponent> @<PersonSh> * ;
+  <sportsActivityLocation> @<SportsActivityLocationSh> * ;
+  <toLocation> @<PlaceSh> * ;
+  <fromLocation> @<PlaceSh> * ;
+  <exerciseCourse> @<PlaceSh> * ;
+}
+
+<UserPlaysSh> EXTENDS @<UserInteraction> {
+  a [<UserPlays>] ;
+}
+
+<StadiumOrArenaSh> EXTENDS @<SportsActivityLocation> @<CivicStructure> {
+  a [<StadiumOrArena>] ;
+}
+
+<TripSh> EXTENDS @<Intangible> {
+  a [<Trip>] ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <offers> @<OfferSh> * ;
+  <arrivalTime> @<DateTimeSh> OR @<TimeSh> * ;
+  <departureTime> @<DateTimeSh> OR @<TimeSh> * ;
+}
+
+<DatasetSh> EXTENDS @<CreativeWork> {
+  a [<Dataset>] ;
+  <includedInDataCatalog> @<DataCatalogSh> * ;
+  <datasetTimeInterval> @<DateTimeSh> * ;
+  <catalog> @<DataCatalogSh> * ;
+  <issn> @<TextSh> * ;
+  <includedDataCatalog> @<DataCatalogSh> * ;
+  <distribution> @<DataDownloadSh> * ;
+}
+
+<ActionSh> EXTENDS @<Thing> {
+  a [<Action>] ;
+  <result> @<ThingSh> * ;
+  <startTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <actionStatus> @<ActionStatusTypeSh> * ;
+  <target> @<EntryPointSh> * ;
+  <agent> @<PersonSh> OR @<OrganizationSh> * ;
+  <endTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <participant> @<OrganizationSh> OR @<PersonSh> * ;
+  <instrument> @<ThingSh> * ;
+  <object> @<ThingSh> * ;
+  <error> @<ThingSh> * ;
+  <location> @<PlaceSh> OR @<TextSh> OR @<PostalAddressSh> * ;
+}
+
+<InsuranceAgencySh> EXTENDS @<FinancialService> {
+  a [<InsuranceAgency>] ;
+}
+
+<AudioObjectSh> EXTENDS @<MediaObject> {
+  a [<AudioObject>] ;
+  <transcript> @<TextSh> * ;
+  <caption> @<TextSh> OR @<MediaObjectSh> * ;
+}
+
+<TaxiReservationSh> EXTENDS @<Reservation> {
+  a [<TaxiReservation>] ;
+  <pickupTime> @<DateTimeSh> * ;
+  <partySize> @<IntegerSh> OR @<QuantitativeValueSh> * ;
+  <pickupLocation> @<PlaceSh> * ;
+}
+
+<GameSh> EXTENDS @<CreativeWork> {
+  a [<Game>] ;
+  <gameItem> @<ThingSh> * ;
+  <characterAttribute> @<ThingSh> * ;
+  <gameLocation> @<PlaceSh> OR @<PostalAddressSh> OR @<URLSh> * ;
+  <quest> @<ThingSh> * ;
+  <numberOfPlayers> @<QuantitativeValueSh> * ;
+}
+
+<VehicleSh> EXTENDS @<Product> {
+  a [<Vehicle>] ;
+  <numberOfForwardGears> @<NumberSh> OR @<QuantitativeValueSh> * ;
+  <mileageFromOdometer> @<QuantitativeValueSh> * ;
+  <cargoVolume> @<QuantitativeValueSh> * ;
+  <vehicleInteriorColor> @<TextSh> * ;
+  <steeringPosition> @<SteeringPositionValueSh> * ;
+  <vehicleSeatingCapacity> @<NumberSh> OR @<QuantitativeValueSh> * ;
+  <vehicleEngine> @<EngineSpecificationSh> * ;
+  <vehicleModelDate> @<DateSh> * ;
+  <numberOfDoors> @<QuantitativeValueSh> OR @<NumberSh> * ;
+  <vehicleConfiguration> @<TextSh> * ;
+  <fuelType> @<QualitativeValueSh> OR @<TextSh> OR @<URLSh> * ;
+  <vehicleIdentificationNumber> @<TextSh> * ;
+  <fuelConsumption> @<QuantitativeValueSh> * ;
+  <numberOfPreviousOwners> @<QuantitativeValueSh> OR @<NumberSh> * ;
+  <fuelEfficiency> @<QuantitativeValueSh> * ;
+  <numberOfAxles> @<NumberSh> OR @<QuantitativeValueSh> * ;
+  <vehicleInteriorType> @<TextSh> * ;
+  <knownVehicleDamages> @<TextSh> * ;
+  <numberOfAirbags> @<NumberSh> OR @<TextSh> * ;
+  <vehicleTransmission> @<QualitativeValueSh> OR @<URLSh> OR @<TextSh> * ;
+  <dateVehicleFirstRegistered> @<DateSh> * ;
+  <purchaseDate> @<DateSh> * ;
+  <productionDate> @<DateSh> * ;
+  <driveWheelConfiguration> @<TextSh> OR @<DriveWheelConfigurationValueSh> * ;
+}
+
+<AutoPartsStoreSh> EXTENDS @<AutomotiveBusiness> @<Store> {
+  a [<AutoPartsStore>] ;
+}
+
+<PaintingSh> EXTENDS @<CreativeWork> {
+  a [<Painting>] ;
+}
+
+<SomeProductsSh> EXTENDS @<Product> {
+  a [<SomeProducts>] ;
+  <inventoryLevel> @<QuantitativeValueSh> * ;
+}
+
+<MoveActionSh> EXTENDS @<Action> {
+  a [<MoveAction>] ;
+  <toLocation> @<PlaceSh> * ;
+  <fromLocation> @<PlaceSh> * ;
+}
+
+<CreativeWorkSh> EXTENDS @<Thing> {
+  a [<CreativeWork>] ;
+  <about> @<ThingSh> * ;
+  <accessibilitySummary> @<TextSh> * ;
+  <educationalAlignment> @<AlignmentObjectSh> * ;
+  <associatedMedia> @<MediaObjectSh> * ;
+  <funder> @<OrganizationSh> OR @<PersonSh> * ;
+  <audio> @<ClipSh> OR @<AudioObjectSh> * ;
+  <workExample> @<CreativeWorkSh> * ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <encoding> @<MediaObjectSh> * ;
+  <interactivityType> @<TextSh> * ;
+  <character> @<PersonSh> * ;
+  <audience> @<AudienceSh> * ;
+  <sourceOrganization> @<OrganizationSh> * ;
+  <isPartOf> @<CreativeWorkSh> * ;
+  <video> @<ClipSh> OR @<VideoObjectSh> * ;
+  <publication> @<PublicationEventSh> * ;
+  <text> @<TextSh> * ;
+  <expires> @<DateSh> * ;
+  <contributor> @<OrganizationSh> OR @<PersonSh> * ;
+  <publisher> @<PersonSh> OR @<OrganizationSh> * ;
+  <typicalAgeRange> @<TextSh> * ;
+  <position> @<TextSh> OR @<IntegerSh> * ;
+  <releasedEvent> @<PublicationEventSh> * ;
+  <contentLocation> @<PlaceSh> * ;
+  <schemaVersion> @<URLSh> OR @<TextSh> * ;
+  <accessibilityFeature> @<TextSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <locationCreated> @<PlaceSh> * ;
+  <accessModeSufficient> @<ItemListSh> * ;
+  <temporalCoverage> @<DateTimeSh> OR @<TextSh> OR @<URLSh> * ;
+  <accountablePerson> @<PersonSh> * ;
+  <spatialCoverage> @<PlaceSh> * ;
+  <reviews> @<ReviewSh> * ;
+  <offers> @<OfferSh> * ;
+  <editor> @<PersonSh> * ;
+  <discussionUrl> @<URLSh> * ;
+  <award> @<TextSh> * ;
+  <copyrightHolder> @<PersonSh> OR @<OrganizationSh> * ;
+  <accessibilityHazard> @<TextSh> * ;
+  <copyrightYear> @<NumberSh> * ;
+  <awards> @<TextSh> * ;
+  <recordedAt> @<EventSh> * ;
+  <spatial> @<PlaceSh> * ;
+  <commentCount> @<IntegerSh> * ;
+  <fileFormat> @<URLSh> OR @<TextSh> * ;
+  <inLanguage> @<TextSh> OR @<LanguageSh> * ;
+  <temporal> @<DateTimeSh> OR @<TextSh> * ;
+  <accessibilityAPI> @<TextSh> * ;
+  <interactionStatistic> @<InteractionCounterSh> * ;
+  <contentRating> @<RatingSh> OR @<TextSh> * ;
+  <learningResourceType> @<TextSh> * ;
+  <accessMode> @<TextSh> * ;
+  <material> @<URLSh> OR @<ProductSh> OR @<TextSh> * ;
+  <isFamilyFriendly> @<BooleanSh> * ;
+  <exampleOfWork> @<CreativeWorkSh> * ;
+  <version> @<TextSh> OR @<NumberSh> * ;
+  <dateModified> @<DateSh> OR @<DateTimeSh> * ;
+  <mainEntity> @<ThingSh> * ;
+  <genre> @<TextSh> OR @<URLSh> * ;
+  <keywords> @<TextSh> * ;
+  <author> @<PersonSh> OR @<OrganizationSh> * ;
+  <isBasedOnUrl> @<URLSh> OR @<ProductSh> OR @<CreativeWorkSh> * ;
+  <alternativeHeadline> @<TextSh> * ;
+  <timeRequired> @<DurationSh> * ;
+  <translator> @<OrganizationSh> OR @<PersonSh> * ;
+  <thumbnailUrl> @<URLSh> * ;
+  <hasPart> @<CreativeWorkSh> * ;
+  <comment> @<CommentSh> * ;
+  <encodingFormat> @<TextSh> OR @<URLSh> * ;
+  <review> @<ReviewSh> * ;
+  <license> @<URLSh> OR @<CreativeWorkSh> * ;
+  <accessibilityControl> @<TextSh> * ;
+  <encodings> @<MediaObjectSh> * ;
+  <headline> @<TextSh> * ;
+  <isBasedOn> @<URLSh> OR @<CreativeWorkSh> OR @<ProductSh> * ;
+  <creator> @<OrganizationSh> OR @<PersonSh> * ;
+  <publishingPrinciples> @<CreativeWorkSh> OR @<URLSh> * ;
+  <sponsor> @<PersonSh> OR @<OrganizationSh> * ;
+  <producer> @<OrganizationSh> OR @<PersonSh> * ;
+  <mentions> @<ThingSh> * ;
+  <dateCreated> @<DateSh> OR @<DateTimeSh> * ;
+  <educationalUse> @<TextSh> * ;
+  <datePublished> @<DateSh> * ;
+  <isAccessibleForFree> @<BooleanSh> * ;
+  <citation> @<TextSh> OR @<CreativeWorkSh> * ;
+}
+
+<AddActionSh> EXTENDS @<UpdateAction> {
+  a [<AddAction>] ;
+}
+
+<JewelryStoreSh> EXTENDS @<Store> {
+  a [<JewelryStore>] ;
+}
+
+<ViewActionSh> EXTENDS @<ConsumeAction> {
+  a [<ViewAction>] ;
+}
+
+<WPFooterSh> EXTENDS @<WebPageElement> {
+  a [<WPFooter>] ;
+}
+
+<QAPageSh> EXTENDS @<WebPage> {
+  a [<QAPage>] ;
+}
+
+<LikeActionSh> EXTENDS @<ReactAction> {
+  a [<LikeAction>] ;
+}
+
+<PublicationEventSh> EXTENDS @<Event> {
+  a [<PublicationEvent>] ;
+  <publishedOn> @<BroadcastServiceSh> * ;
+  <free> @<BooleanSh> * ;
+  <isAccessibleForFree> @<BooleanSh> * ;
+}
+
+<CourseSh> EXTENDS @<CreativeWork> {
+  a [<Course>] ;
+  <coursePrerequisites> @<AlignmentObjectSh> OR @<TextSh> OR @<CourseSh> * ;
+  <educationalCredentialAwarded> @<URLSh> OR @<EducationalOccupationalCredentialSh> OR @<TextSh> * ;
+  <hasCourseInstance> @<CourseInstanceSh> * ;
+  <courseCode> @<TextSh> * ;
+}
+
+<MobileApplicationSh> EXTENDS @<SoftwareApplication> {
+  a [<MobileApplication>] ;
+  <carrierRequirements> @<TextSh> * ;
+}
+
+<ParcelServiceSh> EXTENDS @<DeliveryMethod> {
+  a [<ParcelService>] ;
+}
+
+<BefriendActionSh> EXTENDS @<InteractAction> {
+  a [<BefriendAction>] ;
+}
+
+<HowToSh> EXTENDS @<CreativeWork> {
+  a [<HowTo>] ;
+  <prepTime> @<DurationSh> * ;
+  <steps> @<CreativeWorkSh> OR @<ItemListSh> OR @<TextSh> * ;
+  <step> @<TextSh> OR @<HowToStepSh> OR @<HowToSectionSh> OR @<CreativeWorkSh> * ;
+  <performTime> @<DurationSh> * ;
+  <estimatedCost> @<MonetaryAmountSh> OR @<TextSh> * ;
+  <totalTime> @<DurationSh> * ;
+  <supply> @<HowToSupplySh> OR @<TextSh> * ;
+  <tool> @<TextSh> OR @<HowToToolSh> * ;
+  <yield> @<TextSh> OR @<QuantitativeValueSh> * ;
+}
+
+<PoliceStationSh> EXTENDS @<EmergencyService> @<CivicStructure> {
+  a [<PoliceStation>] ;
+}
+
+<HealthClubSh> EXTENDS @<HealthAndBeautyBusiness> @<SportsActivityLocation> {
+  a [<HealthClub>] ;
+}
+
+<DrinkActionSh> EXTENDS @<ConsumeAction> {
+  a [<DrinkAction>] ;
+}
+
+<DownloadActionSh> EXTENDS @<TransferAction> {
+  a [<DownloadAction>] ;
+}
+
+<TireShopSh> EXTENDS @<Store> {
+  a [<TireShop>] ;
+}
+
+<SynagogueSh> EXTENDS @<PlaceOfWorship> {
+  a [<Synagogue>] ;
+}
+
+<SteeringPositionValueSh> EXTENDS @<QualitativeValue> {
+  a [<SteeringPositionValue>] ;
+}
+
+<AnimalShelterSh> EXTENDS @<LocalBusiness> {
+  a [<AnimalShelter>] ;
+}
+
+<WorkersUnionSh> EXTENDS @<Organization> {
+  a [<WorkersUnion>] ;
+}
+
+<HowToSectionSh> EXTENDS @<ItemList> @<CreativeWork> @<ListItem> {
+  a [<HowToSection>] ;
+  <steps> @<CreativeWorkSh> OR @<ItemListSh> OR @<TextSh> * ;
+}
+
+<MusicAlbumSh> EXTENDS @<MusicPlaylist> {
+  a [<MusicAlbum>] ;
+  <albumProductionType> @<MusicAlbumProductionTypeSh> * ;
+  <albumReleaseType> @<MusicAlbumReleaseTypeSh> * ;
+  <byArtist> @<PersonSh> OR @<MusicGroupSh> * ;
+  <albumRelease> @<MusicReleaseSh> * ;
+}
+
+<PersonSh> EXTENDS @<Thing> {
+  a [<Person>] ;
+  <memberOf> @<ProgramMembershipSh> OR @<OrganizationSh> * ;
+  <address> @<TextSh> OR @<PostalAddressSh> * ;
+  <spouse> @<PersonSh> * ;
+  <funder> @<OrganizationSh> OR @<PersonSh> * ;
+  <colleagues> @<PersonSh> * ;
+  <deathDate> @<DateSh> * ;
+  <height> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+  <workLocation> @<ContactPointSh> OR @<PlaceSh> * ;
+  <netWorth> @<MonetaryAmountSh> OR @<PriceSpecificationSh> * ;
+  <hasOccupation> @<OccupationSh> * ;
+  <hasOfferCatalog> @<OfferCatalogSh> * ;
+  <deathPlace> @<PlaceSh> * ;
+  <globalLocationNumber> @<TextSh> * ;
+  <birthPlace> @<PlaceSh> * ;
+  <parents> @<PersonSh> * ;
+  <alumniOf> @<EducationalOrganizationSh> OR @<OrganizationSh> * ;
+  <homeLocation> @<ContactPointSh> OR @<PlaceSh> * ;
+  <duns> @<TextSh> * ;
+  <taxID> @<TextSh> * ;
+  <award> @<TextSh> * ;
+  <birthDate> @<DateSh> * ;
+  <makesOffer> @<OfferSh> * ;
+  <givenName> @<TextSh> * ;
+  <contactPoints> @<ContactPointSh> * ;
+  <awards> @<TextSh> * ;
+  <familyName> @<TextSh> * ;
+  <seeks> @<DemandSh> * ;
+  <sibling> @<PersonSh> * ;
+  <performerIn> @<EventSh> * ;
+  <honorificPrefix> @<TextSh> * ;
+  <additionalName> @<TextSh> * ;
+  <siblings> @<PersonSh> * ;
+  <telephone> @<TextSh> * ;
+  <email> @<TextSh> * ;
+  <weight> @<QuantitativeValueSh> * ;
+  <contactPoint> @<ContactPointSh> * ;
+  <colleague> @<URLSh> OR @<PersonSh> * ;
+  <children> @<PersonSh> * ;
+  <naics> @<TextSh> * ;
+  <hasPOS> @<PlaceSh> * ;
+  <parent> @<PersonSh> * ;
+  <owns> @<OwnershipInfoSh> OR @<ProductSh> * ;
+  <affiliation> @<OrganizationSh> * ;
+  <publishingPrinciples> @<CreativeWorkSh> OR @<URLSh> * ;
+  <sponsor> @<PersonSh> OR @<OrganizationSh> * ;
+  <isicV4> @<TextSh> * ;
+  <brand> @<BrandSh> OR @<OrganizationSh> * ;
+  <honorificSuffix> @<TextSh> * ;
+  <vatID> @<TextSh> * ;
+  <nationality> @<CountrySh> * ;
+  <faxNumber> @<TextSh> * ;
+  <relatedTo> @<PersonSh> * ;
+  <follows> @<PersonSh> * ;
+  <knows> @<PersonSh> * ;
+  <worksFor> @<OrganizationSh> * ;
+}
+
+<DeliveryChargeSpecificationSh> EXTENDS @<PriceSpecification> {
+  a [<DeliveryChargeSpecification>] ;
+  <appliesToDeliveryMethod> @<DeliveryMethodSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+  <eligibleRegion> @<PlaceSh> OR @<TextSh> OR @<GeoShapeSh> * ;
+}
+
+<LendActionSh> EXTENDS @<TransferAction> {
+  a [<LendAction>] ;
+  <borrower> @<PersonSh> * ;
+}
+
+<FoodEstablishmentSh> EXTENDS @<LocalBusiness> {
+  a [<FoodEstablishment>] ;
+  <servesCuisine> @<TextSh> * ;
+  <hasMenu> @<URLSh> OR @<MenuSh> OR @<TextSh> * ;
+  <menu> @<URLSh> OR @<TextSh> OR @<MenuSh> * ;
+  <starRating> @<RatingSh> * ;
+  <acceptsReservations> @<URLSh> OR @<TextSh> OR @<BooleanSh> * ;
+}
+
+<ListenActionSh> EXTENDS @<ConsumeAction> {
+  a [<ListenAction>] ;
+}
+
+<TransferActionSh> EXTENDS @<Action> {
+  a [<TransferAction>] ;
+  <toLocation> @<PlaceSh> * ;
+  <fromLocation> @<PlaceSh> * ;
+}
+
+<NutritionInformationSh> EXTENDS @<StructuredValue> {
+  a [<NutritionInformation>] ;
+  <saturatedFatContent> @<MassSh> * ;
+  <fatContent> @<MassSh> * ;
+  <unsaturatedFatContent> @<MassSh> * ;
+  <sugarContent> @<MassSh> * ;
+  <cholesterolContent> @<MassSh> * ;
+  <carbohydrateContent> @<MassSh> * ;
+  <proteinContent> @<MassSh> * ;
+  <sodiumContent> @<MassSh> * ;
+  <transFatContent> @<MassSh> * ;
+  <fiberContent> @<MassSh> * ;
+  <calories> @<EnergySh> * ;
+  <servingSize> @<TextSh> * ;
+}
+
+<SiteNavigationElementSh> EXTENDS @<WebPageElement> {
+  a [<SiteNavigationElement>] ;
+}
+
+<OrganizationSh> EXTENDS @<Thing> {
+  a [<Organization>] ;
+  <serviceArea> @<PlaceSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> * ;
+  <memberOf> @<ProgramMembershipSh> OR @<OrganizationSh> * ;
+  <address> @<TextSh> OR @<PostalAddressSh> * ;
+  <funder> @<OrganizationSh> OR @<PersonSh> * ;
+  <subOrganization> @<OrganizationSh> * ;
+  <hasOfferCatalog> @<OfferCatalogSh> * ;
+  <globalLocationNumber> @<TextSh> * ;
+  <members> @<OrganizationSh> OR @<PersonSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <duns> @<TextSh> * ;
+  <taxID> @<TextSh> * ;
+  <reviews> @<ReviewSh> * ;
+  <award> @<TextSh> * ;
+  <makesOffer> @<OfferSh> * ;
+  <contactPoints> @<ContactPointSh> * ;
+  <awards> @<TextSh> * ;
+  <foundingDate> @<DateSh> * ;
+  <leiCode> @<TextSh> * ;
+  <seeks> @<DemandSh> * ;
+  <member> @<OrganizationSh> OR @<PersonSh> * ;
+  <founders> @<PersonSh> * ;
+  <alumni> @<PersonSh> * ;
+  <dissolutionDate> @<DateSh> * ;
+  <events> @<EventSh> * ;
+  <logo> @<ImageObjectSh> OR @<URLSh> * ;
+  <employees> @<PersonSh> * ;
+  <telephone> @<TextSh> * ;
+  <email> @<TextSh> * ;
+  <department> @<OrganizationSh> * ;
+  <contactPoint> @<ContactPointSh> * ;
+  <parentOrganization> @<OrganizationSh> * ;
+  <legalName> @<TextSh> * ;
+  <employee> @<PersonSh> * ;
+  <numberOfEmployees> @<QuantitativeValueSh> * ;
+  <naics> @<TextSh> * ;
+  <hasPOS> @<PlaceSh> * ;
+  <review> @<ReviewSh> * ;
+  <foundingLocation> @<PlaceSh> * ;
+  <owns> @<OwnershipInfoSh> OR @<ProductSh> * ;
+  <event> @<EventSh> * ;
+  <founder> @<PersonSh> * ;
+  <publishingPrinciples> @<CreativeWorkSh> OR @<URLSh> * ;
+  <sponsor> @<PersonSh> OR @<OrganizationSh> * ;
+  <isicV4> @<TextSh> * ;
+  <slogan> @<TextSh> * ;
+  <location> @<PlaceSh> OR @<TextSh> OR @<PostalAddressSh> * ;
+  <brand> @<BrandSh> OR @<OrganizationSh> * ;
+  <vatID> @<TextSh> * ;
+  <faxNumber> @<TextSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+}
+
+<DeleteActionSh> EXTENDS @<UpdateAction> {
+  a [<DeleteAction>] ;
+}
+
+<TradeActionSh> EXTENDS @<Action> {
+  a [<TradeAction>] ;
+  <priceSpecification> @<PriceSpecificationSh> * ;
+  <priceCurrency> @<TextSh> * ;
+  <price> @<TextSh> OR @<NumberSh> * ;
+}
+
+<LegalServiceSh> EXTENDS @<LocalBusiness> {
+  a [<LegalService>] ;
+}
+
+<VisualArtworkSh> EXTENDS @<CreativeWork> {
+  a [<VisualArtwork>] ;
+  <height> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+  <artMedium> @<TextSh> OR @<URLSh> * ;
+  <artform> @<URLSh> OR @<TextSh> * ;
+  <artworkSurface> @<TextSh> OR @<URLSh> * ;
+  <artEdition> @<IntegerSh> OR @<TextSh> * ;
+  <width> @<DistanceSh> OR @<QuantitativeValueSh> * ;
+  <surface> @<URLSh> OR @<TextSh> * ;
+  <depth> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+}
+
+<AttorneySh> EXTENDS @<LegalService> {
+  a [<Attorney>] ;
+}
+
+<RsvpActionSh> EXTENDS @<InformAction> {
+  a [<RsvpAction>] ;
+  <additionalNumberOfGuests> @<NumberSh> * ;
+  <comment> @<CommentSh> * ;
+  <rsvpResponse> @<RsvpResponseTypeSh> * ;
+}
+
+<GeneralContractorSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<GeneralContractor>] ;
+}
+
+<RatingSh> EXTENDS @<Intangible> {
+  a [<Rating>] ;
+  <ratingValue> @<TextSh> OR @<NumberSh> * ;
+  <bestRating> @<TextSh> OR @<NumberSh> * ;
+  <author> @<PersonSh> OR @<OrganizationSh> * ;
+  <worstRating> @<TextSh> OR @<NumberSh> * ;
+  <reviewAspect> @<TextSh> * ;
+}
+
+<ApartmentComplexSh> EXTENDS @<Residence> {
+  a [<ApartmentComplex>] ;
+}
+
+<RegisterActionSh> EXTENDS @<InteractAction> {
+  a [<RegisterAction>] ;
+}
+
+<HousePainterSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<HousePainter>] ;
+}
+
+<WinActionSh> EXTENDS @<AchieveAction> {
+  a [<WinAction>] ;
+  <loser> @<PersonSh> * ;
+}
+
+<MovieRentalStoreSh> EXTENDS @<Store> {
+  a [<MovieRentalStore>] ;
+}
+
+<WatchActionSh> EXTENDS @<ConsumeAction> {
+  a [<WatchAction>] ;
+}
+
+<PropertyValueSpecificationSh> EXTENDS @<Intangible> {
+  a [<PropertyValueSpecification>] ;
+  <defaultValue> @<ThingSh> OR @<TextSh> * ;
+  <minValue> @<NumberSh> * ;
+  <valuePattern> @<TextSh> * ;
+  <stepValue> @<NumberSh> * ;
+  <valueMaxLength> @<NumberSh> * ;
+  <readonlyValue> @<BooleanSh> * ;
+  <valueMinLength> @<NumberSh> * ;
+  <maxValue> @<NumberSh> * ;
+  <valueName> @<TextSh> * ;
+  <multipleValues> @<BooleanSh> * ;
+  <valueRequired> @<BooleanSh> * ;
+}
+
+<EducationEventSh> EXTENDS @<Event> {
+  a [<EducationEvent>] ;
+}
+
+<ResumeActionSh> EXTENDS @<ControlAction> {
+  a [<ResumeAction>] ;
+}
+
+<ToyStoreSh> EXTENDS @<Store> {
+  a [<ToyStore>] ;
+}
+
+<BedAndBreakfastSh> EXTENDS @<LodgingBusiness> {
+  a [<BedAndBreakfast>] ;
+}
+
+<SuiteSh> EXTENDS @<Accommodation> {
+  a [<Suite>] ;
+  <occupancy> @<QuantitativeValueSh> * ;
+  <bed> @<BedDetailsSh> OR @<BedTypeSh> OR @<TextSh> * ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<GenderTypeSh> EXTENDS @<Enumeration> {
+  a [<GenderType>] ;
+}
+
+<InstallActionSh> EXTENDS @<ConsumeAction> {
+  a [<InstallAction>] ;
+}
+
+<DistillerySh> EXTENDS @<FoodEstablishment> {
+  a [<Distillery>] ;
+}
+
+<GiveActionSh> EXTENDS @<TransferAction> {
+  a [<GiveAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<BuyActionSh> EXTENDS @<TradeAction> {
+  a [<BuyAction>] ;
+  <vendor> @<OrganizationSh> OR @<PersonSh> * ;
+  <seller> @<PersonSh> OR @<OrganizationSh> * ;
+  <warrantyPromise> @<WarrantyPromiseSh> * ;
+}
+
+<PostOfficeSh> EXTENDS @<GovernmentOffice> {
+  a [<PostOffice>] ;
+}
+
+<CheckoutPageSh> EXTENDS @<WebPage> {
+  a [<CheckoutPage>] ;
+}
+
+<AccommodationSh> EXTENDS @<Place> {
+  a [<Accommodation>] ;
+  <floorSize> @<QuantitativeValueSh> * ;
+  <petsAllowed> @<TextSh> OR @<BooleanSh> * ;
+  <amenityFeature> @<LocationFeatureSpecificationSh> * ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+  <permittedUsage> @<TextSh> * ;
+}
+
+<PerformingArtsTheaterSh> EXTENDS @<CivicStructure> {
+  a [<PerformingArtsTheater>] ;
+}
+
+<AggregateOfferSh> EXTENDS @<Offer> {
+  a [<AggregateOffer>] ;
+  <offers> @<OfferSh> * ;
+  <offerCount> @<IntegerSh> * ;
+  <lowPrice> @<TextSh> OR @<NumberSh> * ;
+  <highPrice> @<NumberSh> OR @<TextSh> * ;
+}
+
+<MuseumSh> EXTENDS @<CivicStructure> {
+  a [<Museum>] ;
+}
+
+<HowToSupplySh> EXTENDS @<HowToItem> {
+  a [<HowToSupply>] ;
+  <estimatedCost> @<MonetaryAmountSh> OR @<TextSh> * ;
+}
+
+<AutoRepairSh> EXTENDS @<AutomotiveBusiness> {
+  a [<AutoRepair>] ;
+}
+
+<ExerciseGymSh> EXTENDS @<SportsActivityLocation> {
+  a [<ExerciseGym>] ;
+}
+
+<EmbassySh> EXTENDS @<GovernmentBuilding> {
+  a [<Embassy>] ;
+}
+
+<ProfilePageSh> EXTENDS @<WebPage> {
+  a [<ProfilePage>] ;
+}
+
+<DisagreeActionSh> EXTENDS @<ReactAction> {
+  a [<DisagreeAction>] ;
+}
+
+<ImageObjectSh> EXTENDS @<MediaObject> {
+  a [<ImageObject>] ;
+  <exifData> @<TextSh> OR @<PropertyValueSh> * ;
+  <representativeOfPage> @<BooleanSh> * ;
+  <thumbnail> @<ImageObjectSh> * ;
+  <caption> @<TextSh> OR @<MediaObjectSh> * ;
+}
+
+<ReservationPackageSh> EXTENDS @<Reservation> {
+  a [<ReservationPackage>] ;
+  <subReservation> @<ReservationSh> * ;
+}
+
+<SeaBodyOfWaterSh> EXTENDS @<BodyOfWater> {
+  a [<SeaBodyOfWater>] ;
+}
+
+<TrackActionSh> EXTENDS @<FindAction> {
+  a [<TrackAction>] ;
+  <deliveryMethod> @<DeliveryMethodSh> * ;
+}
+
+<HomeAndConstructionBusinessSh> EXTENDS @<LocalBusiness> {
+  a [<HomeAndConstructionBusiness>] ;
+}
+
+<ProgramMembershipSh> EXTENDS @<Intangible> {
+  a [<ProgramMembership>] ;
+  <membershipNumber> @<TextSh> * ;
+  <members> @<OrganizationSh> OR @<PersonSh> * ;
+  <member> @<OrganizationSh> OR @<PersonSh> * ;
+  <hostingOrganization> @<OrganizationSh> * ;
+  <programName> @<TextSh> * ;
+}
+
+<ControlActionSh> EXTENDS @<Action> {
+  a [<ControlAction>] ;
+}
+
+<CheckActionSh> EXTENDS @<FindAction> {
+  a [<CheckAction>] ;
+}
+
+<DiscussionForumPostingSh> EXTENDS @<SocialMediaPosting> {
+  a [<DiscussionForumPosting>] ;
+}
+
+<IceCreamShopSh> EXTENDS @<FoodEstablishment> {
+  a [<IceCreamShop>] ;
+}
+
+<TouristAttractionSh> EXTENDS @<Place> {
+  a [<TouristAttraction>] ;
+  <touristType> @<AudienceSh> OR @<TextSh> * ;
+  <availableLanguage> @<LanguageSh> OR @<TextSh> * ;
+}
+
+<CarSh> EXTENDS @<Vehicle> {
+  a [<Car>] ;
+}
+
+<PriceSpecificationSh> EXTENDS @<StructuredValue> {
+  a [<PriceSpecification>] ;
+  <minPrice> @<NumberSh> * ;
+  <eligibleTransactionVolume> @<PriceSpecificationSh> * ;
+  <maxPrice> @<NumberSh> * ;
+  <priceCurrency> @<TextSh> * ;
+  <eligibleQuantity> @<QuantitativeValueSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <price> @<TextSh> OR @<NumberSh> * ;
+  <valueAddedTaxIncluded> @<BooleanSh> * ;
+}
+
+<SeasonSh> EXTENDS @<CreativeWork> {
+  a [<Season>] ;
+}
+
+<DrawActionSh> EXTENDS @<CreateAction> {
+  a [<DrawAction>] ;
+}
+
+<PaymentCardSh> EXTENDS @<FinancialProduct> @<PaymentMethod> {
+  a [<PaymentCard>] ;
+}
+
+<PublicationVolumeSh> EXTENDS @<CreativeWork> {
+  a [<PublicationVolume>] ;
+  <pagination> @<TextSh> * ;
+  <pageEnd> @<TextSh> OR @<IntegerSh> * ;
+  <volumeNumber> @<TextSh> OR @<IntegerSh> * ;
+  <pageStart> @<IntegerSh> OR @<TextSh> * ;
+}
+
+<LocalBusinessSh> EXTENDS @<Place> @<Organization> {
+  a [<LocalBusiness>] ;
+  <priceRange> @<TextSh> * ;
+  <branchOf> @<OrganizationSh> * ;
+  <paymentAccepted> @<TextSh> * ;
+  <openingHours> @<TextSh> * ;
+  <currenciesAccepted> @<TextSh> * ;
+}
+
+<CancelActionSh> EXTENDS @<PlanAction> {
+  a [<CancelAction>] ;
+}
+
+<IgnoreActionSh> EXTENDS @<AssessAction> {
+  a [<IgnoreAction>] ;
+}
+
+<MusicRecordingSh> EXTENDS @<CreativeWork> {
+  a [<MusicRecording>] ;
+  <recordingOf> @<MusicCompositionSh> * ;
+  <isrcCode> @<TextSh> * ;
+  <inAlbum> @<MusicAlbumSh> * ;
+  <inPlaylist> @<MusicPlaylistSh> * ;
+  <byArtist> @<PersonSh> OR @<MusicGroupSh> * ;
+  <duration> @<DurationSh> * ;
+}
+
+<MotorcycleDealerSh> EXTENDS @<AutomotiveBusiness> {
+  a [<MotorcycleDealer>] ;
+}
+
+<CheckOutActionSh> EXTENDS @<CommunicateAction> {
+  a [<CheckOutAction>] ;
+}
+
+<BankAccountSh> EXTENDS @<FinancialProduct> {
+  a [<BankAccount>] ;
+}
+
+<DurationSh> EXTENDS @<Quantity> {
+  a [<Duration>] ;
+}
+
+<RealEstateAgentSh> EXTENDS @<LocalBusiness> {
+  a [<RealEstateAgent>] ;
+}
+
+<ApplyActionSh> EXTENDS @<OrganizeAction> {
+  a [<ApplyAction>] ;
+}
+
+<MapCategoryTypeSh> EXTENDS @<Enumeration> {
+  a [<MapCategoryType>] ;
+}
+
+<SportsOrganizationSh> EXTENDS @<Organization> {
+  a [<SportsOrganization>] ;
+  <sport> @<TextSh> OR @<URLSh> * ;
+}
+
+<EndorseActionSh> EXTENDS @<ReactAction> {
+  a [<EndorseAction>] ;
+  <endorsee> @<PersonSh> OR @<OrganizationSh> * ;
+}
+
+<EducationalOrganizationSh> EXTENDS @<Organization> {
+  a [<EducationalOrganization>] ;
+  <alumni> @<PersonSh> * ;
+}
+
+<CableOrSatelliteServiceSh> EXTENDS @<Service> {
+  a [<CableOrSatelliteService>] ;
+}
+
+<HinduTempleSh> EXTENDS @<PlaceOfWorship> {
+  a [<HinduTemple>] ;
+}
+
+<TVSeasonSh> EXTENDS @<CreativeWork> @<CreativeWorkSeason> {
+  a [<TVSeason>] ;
+  <partOfTVSeries> @<TVSeriesSh> * ;
+  <countryOfOrigin> @<CountrySh> * ;
+}
+
+<SearchResultsPageSh> EXTENDS @<WebPage> {
+  a [<SearchResultsPage>] ;
+}
+
+<UserBlocksSh> EXTENDS @<UserInteraction> {
+  a [<UserBlocks>] ;
+}
+
+<DanceEventSh> EXTENDS @<Event> {
+  a [<DanceEvent>] ;
+}
+
+<BookStoreSh> EXTENDS @<Store> {
+  a [<BookStore>] ;
+}
+
+<EntryPointSh> EXTENDS @<Intangible> {
+  a [<EntryPoint>] ;
+  <urlTemplate> @<TextSh> * ;
+  <actionApplication> @<SoftwareApplicationSh> * ;
+  <application> @<SoftwareApplicationSh> * ;
+  <actionPlatform> @<TextSh> OR @<URLSh> * ;
+  <httpMethod> @<TextSh> * ;
+  <encodingType> @<TextSh> * ;
+  <contentType> @<TextSh> * ;
+}
+
+<SaleEventSh> EXTENDS @<Event> {
+  a [<SaleEvent>] ;
+}
+
+<FoodEventSh> EXTENDS @<Event> {
+  a [<FoodEvent>] ;
+}
+
+<DigitalDocumentPermissionSh> EXTENDS @<Intangible> {
+  a [<DigitalDocumentPermission>] ;
+  <grantee> @<PersonSh> OR @<ContactPointSh> OR @<AudienceSh> OR @<OrganizationSh> * ;
+  <permissionType> @<DigitalDocumentPermissionTypeSh> * ;
+}
+
+<OutletStoreSh> EXTENDS @<Store> {
+  a [<OutletStore>] ;
+}
+
+<OrderActionSh> EXTENDS @<TradeAction> {
+  a [<OrderAction>] ;
+  <deliveryMethod> @<DeliveryMethodSh> * ;
+}
+
+<InviteActionSh> EXTENDS @<CommunicateAction> {
+  a [<InviteAction>] ;
+  <event> @<EventSh> * ;
+}
+
+<TVEpisodeSh> EXTENDS @<Episode> {
+  a [<TVEpisode>] ;
+  <partOfTVSeries> @<TVSeriesSh> * ;
+  <countryOfOrigin> @<CountrySh> * ;
+}
+
+<MusicGroupSh> EXTENDS @<PerformingGroup> {
+  a [<MusicGroup>] ;
+  <albums> @<MusicAlbumSh> * ;
+  <musicGroupMember> @<PersonSh> * ;
+  <track> @<ItemListSh> OR @<MusicRecordingSh> * ;
+  <genre> @<TextSh> OR @<URLSh> * ;
+  <tracks> @<MusicRecordingSh> * ;
+  <album> @<MusicAlbumSh> * ;
+}
+
+<AmusementParkSh> EXTENDS @<EntertainmentBusiness> {
+  a [<AmusementPark>] ;
+}
+
+<ContactPointOptionSh> EXTENDS @<Enumeration> {
+  a [<ContactPointOption>] ;
+}
+
+<MobilePhoneStoreSh> EXTENDS @<Store> {
+  a [<MobilePhoneStore>] ;
+}
+
+<CasinoSh> EXTENDS @<EntertainmentBusiness> {
+  a [<Casino>] ;
+}
+
+<SubscribeActionSh> EXTENDS @<InteractAction> {
+  a [<SubscribeAction>] ;
+}
+
+<BusinessEventSh> EXTENDS @<Event> {
+  a [<BusinessEvent>] ;
+}
+
+<GameServerSh> EXTENDS @<Intangible> {
+  a [<GameServer>] ;
+  <game> @<VideoGameSh> * ;
+  <playersOnline> @<IntegerSh> * ;
+  <serverStatus> @<GameServerStatusSh> * ;
+}
+
+<DepositAccountSh> EXTENDS @<InvestmentOrDeposit> @<BankAccount> {
+  a [<DepositAccount>] ;
+}
+
+<DigitalDocumentPermissionTypeSh> EXTENDS @<Enumeration> {
+  a [<DigitalDocumentPermissionType>] ;
+}
+
+<MotelSh> EXTENDS @<LodgingBusiness> {
+  a [<Motel>] ;
+}
+
+<WPAdBlockSh> EXTENDS @<WebPageElement> {
+  a [<WPAdBlock>] ;
+}
+
+<ChildCareSh> EXTENDS @<LocalBusiness> {
+  a [<ChildCare>] ;
+}
+
+<InternetCafeSh> EXTENDS @<LocalBusiness> {
+  a [<InternetCafe>] ;
+}
+
+<PaymentStatusTypeSh> EXTENDS @<Enumeration> {
+  a [<PaymentStatusType>] ;
+}
+
+<MusicAlbumReleaseTypeSh> EXTENDS @<Enumeration> {
+  a [<MusicAlbumReleaseType>] ;
+}
+
+<PharmacySh> EXTENDS @<MedicalOrganization> @<MedicalBusiness> {
+  a [<Pharmacy>] ;
+}
+
+<DefenceEstablishmentSh> EXTENDS @<GovernmentBuilding> {
+  a [<DefenceEstablishment>] ;
+}
+
+<BreadcrumbListSh> EXTENDS @<ItemList> {
+  a [<BreadcrumbList>] ;
+}
+
+<ChurchSh> EXTENDS @<PlaceOfWorship> {
+  a [<Church>] ;
+}
+
+<LiquorStoreSh> EXTENDS @<Store> {
+  a [<LiquorStore>] ;
+}
+
+<PublicationIssueSh> EXTENDS @<CreativeWork> {
+  a [<PublicationIssue>] ;
+  <pagination> @<TextSh> * ;
+  <issueNumber> @<IntegerSh> OR @<TextSh> * ;
+  <pageEnd> @<TextSh> OR @<IntegerSh> * ;
+  <pageStart> @<IntegerSh> OR @<TextSh> * ;
+}
+
+<GameServerStatusSh> EXTENDS @<Enumeration> {
+  a [<GameServerStatus>] ;
+}
+
+<ArticleSh> EXTENDS @<CreativeWork> {
+  a [<Article>] ;
+  <pagination> @<TextSh> * ;
+  <speakable> @<URLSh> OR @<SpeakableSpecificationSh> * ;
+  <pageEnd> @<TextSh> OR @<IntegerSh> * ;
+  <articleSection> @<TextSh> * ;
+  <pageStart> @<IntegerSh> OR @<TextSh> * ;
+  <wordCount> @<IntegerSh> * ;
+  <articleBody> @<TextSh> * ;
+}
+
+<UserTweetsSh> EXTENDS @<UserInteraction> {
+  a [<UserTweets>] ;
+}
+
+<EnumerationSh> EXTENDS @<Intangible> {
+  a [<Enumeration>] ;
+}
+
+<WebPageElementSh> EXTENDS @<CreativeWork> {
+  a [<WebPageElement>] ;
+  <cssSelector> @<CssSelectorTypeSh> * ;
+  <xpath> @<XPathTypeSh> * ;
+}
+
+<VideoGameSh> EXTENDS @<Game> @<SoftwareApplication> {
+  a [<VideoGame>] ;
+  <gamePlatform> @<URLSh> OR @<ThingSh> OR @<TextSh> * ;
+  <gameServer> @<GameServerSh> * ;
+  <actor> @<PersonSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <cheatCode> @<CreativeWorkSh> * ;
+  <gameTip> @<CreativeWorkSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <playMode> @<GamePlayModeSh> * ;
+  <director> @<PersonSh> * ;
+  <actors> @<PersonSh> * ;
+}
+
+<UserInteractionSh> EXTENDS @<Event> {
+  a [<UserInteraction>] ;
+}
+
+<AirlineSh> EXTENDS @<Organization> {
+  a [<Airline>] ;
+  <iataCode> @<TextSh> * ;
+  <boardingPolicy> @<BoardingPolicyTypeSh> * ;
+}
+
+<LiveBlogPostingSh> EXTENDS @<BlogPosting> {
+  a [<LiveBlogPosting>] ;
+  <coverageStartTime> @<DateTimeSh> * ;
+  <coverageEndTime> @<DateTimeSh> * ;
+  <liveBlogUpdate> @<BlogPostingSh> * ;
+}
+
+<BikeStoreSh> EXTENDS @<Store> {
+  a [<BikeStore>] ;
+}
+
+<BuddhistTempleSh> EXTENDS @<PlaceOfWorship> {
+  a [<BuddhistTemple>] ;
+}
+
+<MenuSectionSh> EXTENDS @<CreativeWork> {
+  a [<MenuSection>] ;
+  <hasMenuItem> @<MenuItemSh> * ;
+  <hasMenuSection> @<MenuSectionSh> * ;
+}
+
+<AutoRentalSh> EXTENDS @<AutomotiveBusiness> {
+  a [<AutoRental>] ;
+}
+
+<AchieveActionSh> EXTENDS @<Action> {
+  a [<AchieveAction>] ;
+}
+
+<HotelRoomSh> EXTENDS @<Room> {
+  a [<HotelRoom>] ;
+  <occupancy> @<QuantitativeValueSh> * ;
+  <bed> @<BedDetailsSh> OR @<BedTypeSh> OR @<TextSh> * ;
+}
+
+<WebSiteSh> EXTENDS @<CreativeWork> {
+  a [<WebSite>] ;
+  <issn> @<TextSh> * ;
+}
+
+<MovieSh> EXTENDS @<CreativeWork> {
+  a [<Movie>] ;
+  <actor> @<PersonSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <countryOfOrigin> @<CountrySh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <duration> @<DurationSh> * ;
+  <actors> @<PersonSh> * ;
+}
+
+<EventReservationSh> EXTENDS @<Reservation> {
+  a [<EventReservation>] ;
+}
+
+<OrganizeActionSh> EXTENDS @<Action> {
+  a [<OrganizeAction>] ;
+}
+
+<AudienceSh> EXTENDS @<Intangible> {
+  a [<Audience>] ;
+  <audienceType> @<TextSh> * ;
+  <geographicArea> @<AdministrativeAreaSh> * ;
+}
+
+<RestaurantSh> EXTENDS @<FoodEstablishment> {
+  a [<Restaurant>] ;
+}
+
+<AgreeActionSh> EXTENDS @<ReactAction> {
+  a [<AgreeAction>] ;
+}
+
+<IntegerSh> EXTENDS @<Number> {
+  a [<Integer>] ;
+}
+
+<UseActionSh> EXTENDS @<ConsumeAction> {
+  a [<UseAction>] ;
+}
+
+<APIReferenceSh> EXTENDS @<TechArticle> {
+  a [<APIReference>] ;
+  <executableLibraryName> @<TextSh> * ;
+  <assemblyVersion> @<TextSh> * ;
+  <programmingModel> @<TextSh> * ;
+  <assembly> @<TextSh> * ;
+  <targetPlatform> @<TextSh> * ;
+}
+
+<DepartmentStoreSh> EXTENDS @<Store> {
+  a [<DepartmentStore>] ;
+}
+
+<FilmActionSh> EXTENDS @<CreateAction> {
+  a [<FilmAction>] ;
+}
+
+<SoftwareApplicationSh> EXTENDS @<CreativeWork> {
+  a [<SoftwareApplication>] ;
+  <downloadUrl> @<URLSh> * ;
+  <softwareRequirements> @<TextSh> OR @<URLSh> * ;
+  <permissions> @<TextSh> * ;
+  <processorRequirements> @<TextSh> * ;
+  <availableOnDevice> @<TextSh> * ;
+  <featureList> @<URLSh> OR @<TextSh> * ;
+  <applicationSubCategory> @<URLSh> OR @<TextSh> * ;
+  <requirements> @<TextSh> OR @<URLSh> * ;
+  <device> @<TextSh> * ;
+  <applicationCategory> @<TextSh> OR @<URLSh> * ;
+  <softwareVersion> @<TextSh> * ;
+  <storageRequirements> @<TextSh> OR @<URLSh> * ;
+  <applicationSuite> @<TextSh> * ;
+  <memoryRequirements> @<URLSh> OR @<TextSh> * ;
+  <screenshot> @<ImageObjectSh> OR @<URLSh> * ;
+  <countriesSupported> @<TextSh> * ;
+  <softwareHelp> @<CreativeWorkSh> * ;
+  <softwareAddOn> @<SoftwareApplicationSh> * ;
+  <releaseNotes> @<TextSh> OR @<URLSh> * ;
+  <supportingData> @<DataFeedSh> * ;
+  <countriesNotSupported> @<TextSh> * ;
+  <operatingSystem> @<TextSh> * ;
+  <fileSize> @<TextSh> * ;
+  <installUrl> @<URLSh> * ;
+}
+
+<CodeSh> EXTENDS @<CreativeWork> {
+  a [<Code>] ;
+}
+
+<SportingGoodsStoreSh> EXTENDS @<Store> {
+  a [<SportingGoodsStore>] ;
+}
+
+<TextDigitalDocumentSh> EXTENDS @<DigitalDocument> {
+  a [<TextDigitalDocument>] ;
+}
+
+<QuantitativeValueDistributionSh> EXTENDS @<StructuredValue> {
+  a [<QuantitativeValueDistribution>] ;
+  <percentile25> @<NumberSh> * ;
+  <median> @<NumberSh> * ;
+  <percentile10> @<NumberSh> * ;
+  <duration> @<DurationSh> * ;
+  <percentile90> @<NumberSh> * ;
+  <percentile75> @<NumberSh> * ;
+}
+
+<WaterfallSh> EXTENDS @<BodyOfWater> {
+  a [<Waterfall>] ;
+}
+
+<OfficeEquipmentStoreSh> EXTENDS @<Store> {
+  a [<OfficeEquipmentStore>] ;
+}
+
+<PlanActionSh> EXTENDS @<OrganizeAction> {
+  a [<PlanAction>] ;
+  <scheduledTime> @<DateTimeSh> * ;
+}
+
+<MovieTheaterSh> EXTENDS @<CivicStructure> @<EntertainmentBusiness> {
+  a [<MovieTheater>] ;
+  <screenCount> @<NumberSh> * ;
+}
+
+<GatedResidenceCommunitySh> EXTENDS @<Residence> {
+  a [<GatedResidenceCommunity>] ;
+}
+
+<CountrySh> EXTENDS @<AdministrativeArea> {
+  a [<Country>] ;
+}
+
+<PlaceOfWorshipSh> EXTENDS @<CivicStructure> {
+  a [<PlaceOfWorship>] ;
+}
+
+<HowToTipSh> EXTENDS @<CreativeWork> @<ListItem> {
+  a [<HowToTip>] ;
+}
+
+<ComputerLanguageSh> EXTENDS @<Intangible> {
+  a [<ComputerLanguage>] ;
+}
+
+<PerformanceRoleSh> EXTENDS @<Role> {
+  a [<PerformanceRole>] ;
+  <characterName> @<TextSh> * ;
+}
+
+<UnitPriceSpecificationSh> EXTENDS @<PriceSpecification> {
+  a [<UnitPriceSpecification>] ;
+  <unitCode> @<TextSh> OR @<URLSh> * ;
+  <billingIncrement> @<NumberSh> * ;
+  <referenceQuantity> @<QuantitativeValueSh> * ;
+  <unitText> @<TextSh> * ;
+  <priceType> @<TextSh> * ;
+}
+
+<PerformActionSh> EXTENDS @<PlayAction> {
+  a [<PerformAction>] ;
+  <entertainmentBusiness> @<EntertainmentBusinessSh> * ;
+}
+
+<BedTypeSh> EXTENDS @<QualitativeValue> {
+  a [<BedType>] ;
+}
+
+<ClothingStoreSh> EXTENDS @<Store> {
+  a [<ClothingStore>] ;
+}
+
+<MountainSh> EXTENDS @<Landform> {
+  a [<Mountain>] ;
+}
+
+<CivicStructureSh> EXTENDS @<Place> {
+  a [<CivicStructure>] ;
+  <openingHours> @<TextSh> * ;
+}
+
+<ReceiveActionSh> EXTENDS @<TransferAction> {
+  a [<ReceiveAction>] ;
+  <deliveryMethod> @<DeliveryMethodSh> * ;
+  <sender> @<AudienceSh> OR @<PersonSh> OR @<OrganizationSh> * ;
+}
+
+<VideoGameClipSh> EXTENDS @<Clip> {
+  a [<VideoGameClip>] ;
+}
+
+<MusicStoreSh> EXTENDS @<Store> {
+  a [<MusicStore>] ;
+}
+
+<CrematoriumSh> EXTENDS @<CivicStructure> {
+  a [<Crematorium>] ;
+}
+
+<QuoteActionSh> EXTENDS @<TradeAction> {
+  a [<QuoteAction>] ;
+}
+
+<PropertyValueSh> EXTENDS @<StructuredValue> {
+  a [<PropertyValue>] ;
+  <unitCode> @<TextSh> OR @<URLSh> * ;
+  <minValue> @<NumberSh> * ;
+  <propertyID> @<TextSh> OR @<URLSh> * ;
+  <value> @<StructuredValueSh> OR @<TextSh> OR @<NumberSh> OR @<BooleanSh> * ;
+  <valueReference> @<EnumerationSh> OR @<PropertyValueSh> OR @<QuantitativeValueSh> OR @<StructuredValueSh> OR @<QualitativeValueSh> * ;
+  <maxValue> @<NumberSh> * ;
+  <unitText> @<TextSh> * ;
+}
+
+<ListItemSh> EXTENDS @<Intangible> {
+  a [<ListItem>] ;
+  <nextItem> @<ListItemSh> * ;
+  <position> @<TextSh> OR @<IntegerSh> * ;
+  <previousItem> @<ListItemSh> * ;
+  <item> @<ThingSh> * ;
+}
+
+<ContactPageSh> EXTENDS @<WebPage> {
+  a [<ContactPage>] ;
+}
+
+<WebApplicationSh> EXTENDS @<SoftwareApplication> {
+  a [<WebApplication>] ;
+  <browserRequirements> @<TextSh> * ;
+}
+
+<BroadcastFrequencySpecificationSh> EXTENDS @<Intangible> {
+  a [<BroadcastFrequencySpecification>] ;
+  <broadcastFrequencyValue> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<BlogPostingSh> EXTENDS @<SocialMediaPosting> {
+  a [<BlogPosting>] ;
+}
+
+<LodgingReservationSh> EXTENDS @<Reservation> {
+  a [<LodgingReservation>] ;
+  <checkinTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <numChildren> @<IntegerSh> OR @<QuantitativeValueSh> * ;
+  <lodgingUnitDescription> @<TextSh> * ;
+  <checkoutTime> @<DateTimeSh> OR @<TimeSh> * ;
+  <lodgingUnitType> @<QualitativeValueSh> OR @<TextSh> * ;
+  <numAdults> @<IntegerSh> OR @<QuantitativeValueSh> * ;
+}
+
+<PreOrderActionSh> EXTENDS @<TradeAction> {
+  a [<PreOrderAction>] ;
+}
+
+<MediaSubscriptionSh> EXTENDS @<Intangible> {
+  a [<MediaSubscription>] ;
+  <authenticator> @<OrganizationSh> * ;
+  <expectsAcceptanceOf> @<OfferSh> * ;
+}
+
+<PresentationDigitalDocumentSh> EXTENDS @<DigitalDocument> {
+  a [<PresentationDigitalDocument>] ;
+}
+
+<ReportSh> EXTENDS @<Article> {
+  a [<Report>] ;
+  <reportNumber> @<TextSh> * ;
+}
+
+<BookSh> EXTENDS @<CreativeWork> {
+  a [<Book>] ;
+  <isbn> @<TextSh> * ;
+  <bookEdition> @<TextSh> * ;
+  <bookFormat> @<BookFormatTypeSh> * ;
+  <illustrator> @<PersonSh> * ;
+  <numberOfPages> @<IntegerSh> * ;
+}
+
+<OfferItemConditionSh> EXTENDS @<Enumeration> {
+  a [<OfferItemCondition>] ;
+}
+
+<LocationFeatureSpecificationSh> EXTENDS @<PropertyValue> {
+  a [<LocationFeatureSpecification>] ;
+  <hoursAvailable> @<OpeningHoursSpecificationSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+}
+
+<MusicReleaseSh> EXTENDS @<MusicPlaylist> {
+  a [<MusicRelease>] ;
+  <recordLabel> @<OrganizationSh> * ;
+  <catalogNumber> @<TextSh> * ;
+  <creditedTo> @<PersonSh> OR @<OrganizationSh> * ;
+  <releaseOf> @<MusicAlbumSh> * ;
+  <duration> @<DurationSh> * ;
+  <musicReleaseFormat> @<MusicReleaseFormatTypeSh> * ;
+}
+
+<TechArticleSh> EXTENDS @<Article> {
+  a [<TechArticle>] ;
+  <proficiencyLevel> @<TextSh> * ;
+  <dependencies> @<TextSh> * ;
+}
+
+<SculptureSh> EXTENDS @<CreativeWork> {
+  a [<Sculpture>] ;
+}
+
+<ComputerStoreSh> EXTENDS @<Store> {
+  a [<ComputerStore>] ;
+}
+
+<RadioStationSh> EXTENDS @<LocalBusiness> {
+  a [<RadioStation>] ;
+}
+
+<MapSh> EXTENDS @<CreativeWork> {
+  a [<Map>] ;
+  <mapType> @<MapCategoryTypeSh> * ;
+}
+
+<GolfCourseSh> EXTENDS @<SportsActivityLocation> {
+  a [<GolfCourse>] ;
+}
+
+<DepartActionSh> EXTENDS @<MoveAction> {
+  a [<DepartAction>] ;
+}
+
+<ActionAccessSpecificationSh> EXTENDS @<Intangible> {
+  a [<ActionAccessSpecification>] ;
+  <availabilityStarts> @<DateSh> OR @<TimeSh> OR @<DateTimeSh> * ;
+  <requiresSubscription> @<MediaSubscriptionSh> OR @<BooleanSh> * ;
+  <category> @<TextSh> OR @<ThingSh> OR @<PhysicalActivityCategorySh> * ;
+  <availabilityEnds> @<DateTimeSh> OR @<TimeSh> OR @<DateSh> * ;
+  <expectsAcceptanceOf> @<OfferSh> * ;
+  <eligibleRegion> @<PlaceSh> OR @<TextSh> OR @<GeoShapeSh> * ;
+}
+
+<CommentSh> EXTENDS @<CreativeWork> {
+  a [<Comment>] ;
+  <upvoteCount> @<IntegerSh> * ;
+  <parentItem> @<QuestionSh> * ;
+  <downvoteCount> @<IntegerSh> * ;
+}
+
+<ShoeStoreSh> EXTENDS @<Store> {
+  a [<ShoeStore>] ;
+}
+
+<SuspendActionSh> EXTENDS @<ControlAction> {
+  a [<SuspendAction>] ;
+}
+
+<WPSideBarSh> EXTENDS @<WebPageElement> {
+  a [<WPSideBar>] ;
+}
+
+<FlightReservationSh> EXTENDS @<Reservation> {
+  a [<FlightReservation>] ;
+  <passengerSequenceNumber> @<TextSh> * ;
+  <securityScreening> @<TextSh> * ;
+  <passengerPriorityStatus> @<QualitativeValueSh> OR @<TextSh> * ;
+  <boardingGroup> @<TextSh> * ;
+}
+
+<AlignmentObjectSh> EXTENDS @<Intangible> {
+  a [<AlignmentObject>] ;
+  <targetDescription> @<TextSh> * ;
+  <targetUrl> @<URLSh> * ;
+  <targetName> @<TextSh> * ;
+  <alignmentType> @<TextSh> * ;
+  <educationalFramework> @<TextSh> * ;
+}
+
+<SellActionSh> EXTENDS @<TradeAction> {
+  a [<SellAction>] ;
+  <buyer> @<PersonSh> * ;
+  <warrantyPromise> @<WarrantyPromiseSh> * ;
+}
+
+<PetStoreSh> EXTENDS @<Store> {
+  a [<PetStore>] ;
+}
+
+<OnDemandEventSh> EXTENDS @<PublicationEvent> {
+  a [<OnDemandEvent>] ;
+}
+
+<AutoDealerSh> EXTENDS @<AutomotiveBusiness> {
+  a [<AutoDealer>] ;
+}
+
+<ChooseActionSh> EXTENDS @<AssessAction> {
+  a [<ChooseAction>] ;
+  <actionOption> @<ThingSh> OR @<TextSh> * ;
+  <option> @<ThingSh> OR @<TextSh> * ;
+}
+
+<RestrictedDietSh> EXTENDS @<Enumeration> {
+  a [<RestrictedDiet>] ;
+}
+
+<GovernmentOfficeSh> EXTENDS @<LocalBusiness> {
+  a [<GovernmentOffice>] ;
+}
+
+<PlaceSh> EXTENDS @<Thing> {
+  a [<Place>] ;
+  <geoWithin> @<GeospatialGeometrySh> OR @<PlaceSh> * ;
+  <geoContains> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <photo> @<ImageObjectSh> OR @<PhotographSh> * ;
+  <address> @<TextSh> OR @<PostalAddressSh> * ;
+  <latitude> @<TextSh> OR @<NumberSh> * ;
+  <openingHoursSpecification> @<OpeningHoursSpecificationSh> * ;
+  <maps> @<URLSh> * ;
+  <containedInPlace> @<PlaceSh> * ;
+  <geoOverlaps> @<GeospatialGeometrySh> OR @<PlaceSh> * ;
+  <smokingAllowed> @<BooleanSh> * ;
+  <globalLocationNumber> @<TextSh> * ;
+  <maximumAttendeeCapacity> @<IntegerSh> * ;
+  <geoCrosses> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <reviews> @<ReviewSh> * ;
+  <photos> @<PhotographSh> OR @<ImageObjectSh> * ;
+  <map> @<URLSh> * ;
+  <branchCode> @<TextSh> * ;
+  <longitude> @<NumberSh> OR @<TextSh> * ;
+  <hasMap> @<MapSh> OR @<URLSh> * ;
+  <additionalProperty> @<PropertyValueSh> * ;
+  <events> @<EventSh> * ;
+  <specialOpeningHoursSpecification> @<OpeningHoursSpecificationSh> * ;
+  <amenityFeature> @<LocationFeatureSpecificationSh> * ;
+  <logo> @<ImageObjectSh> OR @<URLSh> * ;
+  <telephone> @<TextSh> * ;
+  <geo> @<GeoCoordinatesSh> OR @<GeoShapeSh> * ;
+  <geoCovers> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <geoEquals> @<GeospatialGeometrySh> OR @<PlaceSh> * ;
+  <review> @<ReviewSh> * ;
+  <publicAccess> @<BooleanSh> * ;
+  <event> @<EventSh> * ;
+  <geoTouches> @<GeospatialGeometrySh> OR @<PlaceSh> * ;
+  <containsPlace> @<PlaceSh> * ;
+  <geoIntersects> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <geoDisjoint> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <isicV4> @<TextSh> * ;
+  <slogan> @<TextSh> * ;
+  <faxNumber> @<TextSh> * ;
+  <isAccessibleForFree> @<BooleanSh> * ;
+  <geoCoveredBy> @<PlaceSh> OR @<GeospatialGeometrySh> * ;
+  <containedIn> @<PlaceSh> * ;
+}
+
+<QualitativeValueSh> EXTENDS @<Enumeration> {
+  a [<QualitativeValue>] ;
+  <greater> @<QualitativeValueSh> * ;
+  <equal> @<QualitativeValueSh> * ;
+  <additionalProperty> @<PropertyValueSh> * ;
+  <lesser> @<QualitativeValueSh> * ;
+  <valueReference> @<EnumerationSh> OR @<PropertyValueSh> OR @<QuantitativeValueSh> OR @<StructuredValueSh> OR @<QualitativeValueSh> * ;
+  <nonEqual> @<QualitativeValueSh> * ;
+  <lesserOrEqual> @<QualitativeValueSh> * ;
+  <greaterOrEqual> @<QualitativeValueSh> * ;
+}
+
+<SendActionSh> EXTENDS @<TransferAction> {
+  a [<SendAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+  <deliveryMethod> @<DeliveryMethodSh> * ;
+}
+
+<LeaveActionSh> EXTENDS @<InteractAction> {
+  a [<LeaveAction>] ;
+  <event> @<EventSh> * ;
+}
+
+<GasStationSh> EXTENDS @<AutomotiveBusiness> {
+  a [<GasStation>] ;
+}
+
+<MosqueSh> EXTENDS @<PlaceOfWorship> {
+  a [<Mosque>] ;
+}
+
+<AssessActionSh> EXTENDS @<Action> {
+  a [<AssessAction>] ;
+}
+
+<CommentActionSh> EXTENDS @<CommunicateAction> {
+  a [<CommentAction>] ;
+  <resultComment> @<CommentSh> * ;
+}
+
+<LibrarySh> EXTENDS @<LocalBusiness> {
+  a [<Library>] ;
+}
+
+<TouristInformationCenterSh> EXTENDS @<LocalBusiness> {
+  a [<TouristInformationCenter>] ;
+}
+
+<MusicCompositionSh> EXTENDS @<CreativeWork> {
+  a [<MusicComposition>] ;
+  <musicCompositionForm> @<TextSh> * ;
+  <includedComposition> @<MusicCompositionSh> * ;
+  <lyricist> @<PersonSh> * ;
+  <recordedAs> @<MusicRecordingSh> * ;
+  <firstPerformance> @<EventSh> * ;
+  <musicArrangement> @<MusicCompositionSh> * ;
+  <lyrics> @<CreativeWorkSh> * ;
+  <iswcCode> @<TextSh> * ;
+  <composer> @<PersonSh> OR @<OrganizationSh> * ;
+  <musicalKey> @<TextSh> * ;
+}
+
+<ProfessionalServiceSh> EXTENDS @<LocalBusiness> {
+  a [<ProfessionalService>] ;
+}
+
+<AquariumSh> EXTENDS @<CivicStructure> {
+  a [<Aquarium>] ;
+}
+
+<SelfStorageSh> EXTENDS @<LocalBusiness> {
+  a [<SelfStorage>] ;
+}
+
+<GeoShapeSh> EXTENDS @<StructuredValue> {
+  a [<GeoShape>] ;
+  <address> @<TextSh> OR @<PostalAddressSh> * ;
+  <circle> @<TextSh> * ;
+  <box> @<TextSh> * ;
+  <addressCountry> @<CountrySh> OR @<TextSh> * ;
+  <postalCode> @<TextSh> * ;
+  <elevation> @<TextSh> OR @<NumberSh> * ;
+  <polygon> @<TextSh> * ;
+  <line> @<TextSh> * ;
+}
+
+<EntertainmentBusinessSh> EXTENDS @<LocalBusiness> {
+  a [<EntertainmentBusiness>] ;
+}
+
+<BroadcastChannelSh> EXTENDS @<Intangible> {
+  a [<BroadcastChannel>] ;
+  <broadcastFrequency> @<TextSh> OR @<BroadcastFrequencySpecificationSh> * ;
+  <broadcastChannelId> @<TextSh> * ;
+  <broadcastServiceTier> @<TextSh> * ;
+  <inBroadcastLineup> @<CableOrSatelliteServiceSh> * ;
+  <providesBroadcastService> @<BroadcastServiceSh> * ;
+  <genre> @<TextSh> OR @<URLSh> * ;
+}
+
+<FloristSh> EXTENDS @<Store> {
+  a [<Florist>] ;
+}
+
+<MassSh> EXTENDS @<Quantity> {
+  a [<Mass>] ;
+}
+
+<HowToToolSh> EXTENDS @<HowToItem> {
+  a [<HowToTool>] ;
+}
+
+<PaymentMethodSh> EXTENDS @<Enumeration> {
+  a [<PaymentMethod>] ;
+}
+
+<UserPlusOnesSh> EXTENDS @<UserInteraction> {
+  a [<UserPlusOnes>] ;
+}
+
+<BarcodeSh> EXTENDS @<ImageObject> {
+  a [<Barcode>] ;
+}
+
+<WebPageSh> EXTENDS @<CreativeWork> {
+  a [<WebPage>] ;
+  <lastReviewed> @<DateSh> * ;
+  <speakable> @<URLSh> OR @<SpeakableSpecificationSh> * ;
+  <breadcrumb> @<TextSh> OR @<BreadcrumbListSh> * ;
+  <significantLink> @<URLSh> * ;
+  <relatedLink> @<URLSh> * ;
+  <mainContentOfPage> @<WebPageElementSh> * ;
+  <reviewedBy> @<PersonSh> OR @<OrganizationSh> * ;
+  <primaryImageOfPage> @<ImageObjectSh> * ;
+  <significantLinks> @<URLSh> * ;
+  <specialty> @<SpecialtySh> * ;
+}
+
+<ResidenceSh> EXTENDS @<Place> {
+  a [<Residence>] ;
+}
+
+<UserPageVisitsSh> EXTENDS @<UserInteraction> {
+  a [<UserPageVisits>] ;
+}
+
+<ContinentSh> EXTENDS @<Landform> {
+  a [<Continent>] ;
+}
+
+<BusTripSh> EXTENDS @<Trip> {
+  a [<BusTrip>] ;
+  <busName> @<TextSh> * ;
+  <departureBusStop> @<BusStationSh> OR @<BusStopSh> * ;
+  <arrivalBusStop> @<BusStationSh> OR @<BusStopSh> * ;
+  <busNumber> @<TextSh> * ;
+}
+
+<UnRegisterActionSh> EXTENDS @<InteractAction> {
+  a [<UnRegisterAction>] ;
+}
+
+<LoseActionSh> EXTENDS @<AchieveAction> {
+  a [<LoseAction>] ;
+  <winner> @<PersonSh> * ;
+}
+
+<ShoppingCenterSh> EXTENDS @<LocalBusiness> {
+  a [<ShoppingCenter>] ;
+}
+
+<FlightSh> EXTENDS @<Trip> {
+  a [<Flight>] ;
+  <arrivalAirport> @<AirportSh> * ;
+  <arrivalGate> @<TextSh> * ;
+  <flightNumber> @<TextSh> * ;
+  <carrier> @<OrganizationSh> * ;
+  <boardingPolicy> @<BoardingPolicyTypeSh> * ;
+  <aircraft> @<VehicleSh> OR @<TextSh> * ;
+  <webCheckinTime> @<DateTimeSh> * ;
+  <seller> @<PersonSh> OR @<OrganizationSh> * ;
+  <mealService> @<TextSh> * ;
+  <departureGate> @<TextSh> * ;
+  <departureTerminal> @<TextSh> * ;
+  <estimatedFlightDuration> @<TextSh> OR @<DurationSh> * ;
+  <flightDistance> @<TextSh> OR @<DistanceSh> * ;
+  <arrivalTerminal> @<TextSh> * ;
+  <departureAirport> @<AirportSh> * ;
+}
+
+<HowToStepSh> EXTENDS @<ItemList> @<ListItem> @<CreativeWork> {
+  a [<HowToStep>] ;
+}
+
+<OfferCatalogSh> EXTENDS @<ItemList> {
+  a [<OfferCatalog>] ;
+}
+
+<CreativeWorkSeriesSh> EXTENDS @<Series> @<CreativeWork> {
+  a [<CreativeWorkSeries>] ;
+  <endDate> @<DateSh> OR @<DateTimeSh> * ;
+  <issn> @<TextSh> * ;
+  <startDate> @<DateTimeSh> OR @<DateSh> * ;
+}
+
+<ConfirmActionSh> EXTENDS @<InformAction> {
+  a [<ConfirmAction>] ;
+}
+
+<DataFeedSh> EXTENDS @<Dataset> {
+  a [<DataFeed>] ;
+  <dataFeedElement> @<ThingSh> OR @<DataFeedItemSh> OR @<TextSh> * ;
+}
+
+<StateSh> EXTENDS @<AdministrativeArea> {
+  a [<State>] ;
+}
+
+<PlaygroundSh> EXTENDS @<CivicStructure> {
+  a [<Playground>] ;
+}
+
+<AppendActionSh> EXTENDS @<InsertAction> {
+  a [<AppendAction>] ;
+}
+
+<InteractionCounterSh> EXTENDS @<StructuredValue> {
+  a [<InteractionCounter>] ;
+  <interactionService> @<SoftwareApplicationSh> OR @<WebSiteSh> * ;
+  <userInteractionCount> @<IntegerSh> * ;
+  <interactionType> @<ActionSh> * ;
+}
+
+<ParkingFacilitySh> EXTENDS @<CivicStructure> {
+  a [<ParkingFacility>] ;
+}
+
+<CookActionSh> EXTENDS @<CreateAction> {
+  a [<CookAction>] ;
+  <foodEstablishment> @<PlaceSh> OR @<FoodEstablishmentSh> * ;
+  <recipe> @<RecipeSh> * ;
+  <foodEvent> @<FoodEventSh> * ;
+}
+
+<AuthorizeActionSh> EXTENDS @<AllocateAction> {
+  a [<AuthorizeAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<BookSeriesSh> EXTENDS @<CreativeWorkSeries> {
+  a [<BookSeries>] ;
+}
+
+<UserDownloadsSh> EXTENDS @<UserInteraction> {
+  a [<UserDownloads>] ;
+}
+
+<PawnShopSh> EXTENDS @<Store> {
+  a [<PawnShop>] ;
+}
+
+<AssignActionSh> EXTENDS @<AllocateAction> {
+  a [<AssignAction>] ;
+}
+
+<PayActionSh> EXTENDS @<TradeAction> {
+  a [<PayAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<HighSchoolSh> EXTENDS @<EducationalOrganization> {
+  a [<HighSchool>] ;
+}
+
+<TypeAndQuantityNodeSh> EXTENDS @<StructuredValue> {
+  a [<TypeAndQuantityNode>] ;
+  <unitCode> @<TextSh> OR @<URLSh> * ;
+  <typeOfGood> @<ServiceSh> OR @<ProductSh> * ;
+  <amountOfThisGood> @<NumberSh> * ;
+  <businessFunction> @<BusinessFunctionSh> * ;
+  <unitText> @<TextSh> * ;
+}
+
+<OwnershipInfoSh> EXTENDS @<StructuredValue> {
+  a [<OwnershipInfo>] ;
+  <typeOfGood> @<ServiceSh> OR @<ProductSh> * ;
+  <ownedThrough> @<DateTimeSh> * ;
+  <acquiredFrom> @<PersonSh> OR @<OrganizationSh> * ;
+  <ownedFrom> @<DateTimeSh> * ;
+}
+
+<SportsClubSh> EXTENDS @<SportsActivityLocation> {
+  a [<SportsClub>] ;
+}
+
+<NewsArticleSh> EXTENDS @<Article> {
+  a [<NewsArticle>] ;
+  <printColumn> @<TextSh> * ;
+  <printEdition> @<TextSh> * ;
+  <printSection> @<TextSh> * ;
+  <printPage> @<TextSh> * ;
+  <dateline> @<TextSh> * ;
+}
+
+<BridgeSh> EXTENDS @<CivicStructure> {
+  a [<Bridge>] ;
+}
+
+<TrainStationSh> EXTENDS @<CivicStructure> {
+  a [<TrainStation>] ;
+}
+
+<DatedMoneySpecificationSh> EXTENDS @<StructuredValue> {
+  a [<DatedMoneySpecification>] ;
+  <endDate> @<DateSh> OR @<DateTimeSh> * ;
+  <currency> @<TextSh> * ;
+  <amount> @<NumberSh> OR @<MonetaryAmountSh> * ;
+  <startDate> @<DateTimeSh> OR @<DateSh> * ;
+}
+
+<ReserveActionSh> EXTENDS @<PlanAction> {
+  a [<ReserveAction>] ;
+}
+
+<PaymentServiceSh> EXTENDS @<FinancialProduct> {
+  a [<PaymentService>] ;
+}
+
+<SpeakableSpecificationSh> EXTENDS @<Intangible> {
+  a [<SpeakableSpecification>] ;
+  <cssSelector> @<CssSelectorTypeSh> * ;
+  <xpath> @<XPathTypeSh> * ;
+}
+
+<InteractActionSh> EXTENDS @<Action> {
+  a [<InteractAction>] ;
+}
+
+<AMRadioChannelSh> EXTENDS @<RadioChannel> {
+  a [<AMRadioChannel>] ;
+}
+
+<AutoBodyShopSh> EXTENDS @<AutomotiveBusiness> {
+  a [<AutoBodyShop>] ;
+}
+
+<PermitSh> EXTENDS @<Intangible> {
+  a [<Permit>] ;
+  <validFor> @<DurationSh> * ;
+  <validUntil> @<DateSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <issuedBy> @<OrganizationSh> * ;
+  <issuedThrough> @<ServiceSh> * ;
+  <permitAudience> @<AudienceSh> * ;
+  <validIn> @<AdministrativeAreaSh> * ;
+}
+
+<ConvenienceStoreSh> EXTENDS @<Store> {
+  a [<ConvenienceStore>] ;
+}
+
+<SchoolSh> EXTENDS @<EducationalOrganization> {
+  a [<School>] ;
+}
+
+<TelevisionStationSh> EXTENDS @<LocalBusiness> {
+  a [<TelevisionStation>] ;
+}
+
+<HomeGoodsStoreSh> EXTENDS @<Store> {
+  a [<HomeGoodsStore>] ;
+}
+
+<LakeBodyOfWaterSh> EXTENDS @<BodyOfWater> {
+  a [<LakeBodyOfWater>] ;
+}
+
+<BodyOfWaterSh> EXTENDS @<Landform> {
+  a [<BodyOfWater>] ;
+}
+
+<RadioSeriesSh> EXTENDS @<CreativeWorkSeries> {
+  a [<RadioSeries>] ;
+  <seasons> @<CreativeWorkSeasonSh> * ;
+  <actor> @<PersonSh> * ;
+  <numberOfEpisodes> @<IntegerSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <season> @<CreativeWorkSeasonSh> * ;
+  <episodes> @<EpisodeSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <containsSeason> @<CreativeWorkSeasonSh> * ;
+  <directors> @<PersonSh> * ;
+  <numberOfSeasons> @<IntegerSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <actors> @<PersonSh> * ;
+  <episode> @<EpisodeSh> * ;
+}
+
+<MusicVideoObjectSh> EXTENDS @<MediaObject> {
+  a [<MusicVideoObject>] ;
+}
+
+<BeachSh> EXTENDS @<CivicStructure> {
+  a [<Beach>] ;
+}
+
+<SpreadsheetDigitalDocumentSh> EXTENDS @<DigitalDocument> {
+  a [<SpreadsheetDigitalDocument>] ;
+}
+
+<HowToItemSh> EXTENDS @<ListItem> {
+  a [<HowToItem>] ;
+  <requiredQuantity> @<QuantitativeValueSh> OR @<TextSh> OR @<NumberSh> * ;
+}
+
+<ShareActionSh> EXTENDS @<CommunicateAction> {
+  a [<ShareAction>] ;
+}
+
+<WPHeaderSh> EXTENDS @<WebPageElement> {
+  a [<WPHeader>] ;
+}
+
+<LandmarksOrHistoricalBuildingsSh> EXTENDS @<Place> {
+  a [<LandmarksOrHistoricalBuildings>] ;
+}
+
+<MarryActionSh> EXTENDS @<InteractAction> {
+  a [<MarryAction>] ;
+}
+
+<NotarySh> EXTENDS @<LegalService> {
+  a [<Notary>] ;
+}
+
+<ReactActionSh> EXTENDS @<AssessAction> {
+  a [<ReactAction>] ;
+}
+
+<MessageSh> EXTENDS @<CreativeWork> {
+  a [<Message>] ;
+  <dateRead> @<DateTimeSh> OR @<DateSh> * ;
+  <bccRecipient> @<ContactPointSh> OR @<OrganizationSh> OR @<PersonSh> * ;
+  <dateSent> @<DateTimeSh> * ;
+  <ccRecipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> * ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+  <messageAttachment> @<CreativeWorkSh> * ;
+  <dateReceived> @<DateTimeSh> * ;
+  <toRecipient> @<ContactPointSh> OR @<PersonSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+  <sender> @<AudienceSh> OR @<PersonSh> OR @<OrganizationSh> * ;
+}
+
+<InvestmentOrDepositSh> EXTENDS @<FinancialProduct> {
+  a [<InvestmentOrDeposit>] ;
+  <amount> @<NumberSh> OR @<MonetaryAmountSh> * ;
+}
+
+<DryCleaningOrLaundrySh> EXTENDS @<LocalBusiness> {
+  a [<DryCleaningOrLaundry>] ;
+}
+
+<DeactivateActionSh> EXTENDS @<ControlAction> {
+  a [<DeactivateAction>] ;
+}
+
+<FastFoodRestaurantSh> EXTENDS @<FoodEstablishment> {
+  a [<FastFoodRestaurant>] ;
+}
+
+<DataFeedItemSh> EXTENDS @<Intangible> {
+  a [<DataFeedItem>] ;
+  <dateModified> @<DateSh> OR @<DateTimeSh> * ;
+  <dateDeleted> @<DateSh> OR @<DateTimeSh> * ;
+  <dateCreated> @<DateSh> OR @<DateTimeSh> * ;
+  <item> @<ThingSh> * ;
+}
+
+<OrderStatusSh> EXTENDS @<Enumeration> {
+  a [<OrderStatus>] ;
+}
+
+<SocialMediaPostingSh> EXTENDS @<Article> {
+  a [<SocialMediaPosting>] ;
+  <sharedContent> @<CreativeWorkSh> * ;
+}
+
+<ParkSh> EXTENDS @<CivicStructure> {
+  a [<Park>] ;
+}
+
+<VoteActionSh> EXTENDS @<ChooseAction> {
+  a [<VoteAction>] ;
+  <candidate> @<PersonSh> * ;
+}
+
+<BookFormatTypeSh> EXTENDS @<Enumeration> {
+  a [<BookFormatType>] ;
+}
+
+<LoanOrCreditSh> EXTENDS @<FinancialProduct> {
+  a [<LoanOrCredit>] ;
+  <loanTerm> @<QuantitativeValueSh> * ;
+  <currency> @<TextSh> * ;
+  <amount> @<NumberSh> OR @<MonetaryAmountSh> * ;
+  <requiredCollateral> @<ThingSh> OR @<TextSh> * ;
+}
+
+<ZooSh> EXTENDS @<CivicStructure> {
+  a [<Zoo>] ;
+}
+
+<ItemListOrderTypeSh> EXTENDS @<Enumeration> {
+  a [<ItemListOrderType>] ;
+}
+
+<ComedyClubSh> EXTENDS @<EntertainmentBusiness> {
+  a [<ComedyClub>] ;
+}
+
+<ServiceChannelSh> EXTENDS @<Intangible> {
+  a [<ServiceChannel>] ;
+  <providesService> @<ServiceSh> * ;
+  <serviceLocation> @<PlaceSh> * ;
+  <servicePostalAddress> @<PostalAddressSh> * ;
+  <availableLanguage> @<LanguageSh> OR @<TextSh> * ;
+  <serviceUrl> @<URLSh> * ;
+  <servicePhone> @<ContactPointSh> * ;
+  <serviceSmsNumber> @<ContactPointSh> * ;
+  <processingTime> @<DurationSh> * ;
+}
+
+<ExhibitionEventSh> EXTENDS @<Event> {
+  a [<ExhibitionEvent>] ;
+}
+
+<RentActionSh> EXTENDS @<TradeAction> {
+  a [<RentAction>] ;
+  <landlord> @<OrganizationSh> OR @<PersonSh> * ;
+  <realEstateAgent> @<RealEstateAgentSh> * ;
+}
+
+<EmployeeRoleSh> EXTENDS @<OrganizationRole> {
+  a [<EmployeeRole>] ;
+  <salaryCurrency> @<TextSh> * ;
+  <baseSalary> @<PriceSpecificationSh> OR @<MonetaryAmountSh> OR @<NumberSh> * ;
+}
+
+<EmploymentAgencySh> EXTENDS @<LocalBusiness> {
+  a [<EmploymentAgency>] ;
+}
+
+<PrependActionSh> EXTENDS @<InsertAction> {
+  a [<PrependAction>] ;
+}
+
+<FireStationSh> EXTENDS @<CivicStructure> @<EmergencyService> {
+  a [<FireStation>] ;
+}
+
+<CourseInstanceSh> EXTENDS @<Event> {
+  a [<CourseInstance>] ;
+  <instructor> @<PersonSh> * ;
+  <courseMode> @<URLSh> OR @<TextSh> * ;
+}
+
+<HotelSh> EXTENDS @<LodgingBusiness> {
+  a [<Hotel>] ;
+}
+
+<IndividualProductSh> EXTENDS @<Product> {
+  a [<IndividualProduct>] ;
+  <serialNumber> @<TextSh> * ;
+}
+
+<StructuredValueSh> EXTENDS @<Intangible> {
+  a [<StructuredValue>] ;
+}
+
+<RadioClipSh> EXTENDS @<Clip> {
+  a [<RadioClip>] ;
+}
+
+<IntangibleSh> EXTENDS @<Thing> {
+  a [<Intangible>] ;
+}
+
+<ElectronicsStoreSh> EXTENDS @<Store> {
+  a [<ElectronicsStore>] ;
+}
+
+<OrderSh> EXTENDS @<Intangible> {
+  a [<Order>] ;
+  <paymentDue> @<DateTimeSh> * ;
+  <orderNumber> @<TextSh> * ;
+  <paymentUrl> @<URLSh> * ;
+  <orderStatus> @<OrderStatusSh> * ;
+  <partOfInvoice> @<InvoiceSh> * ;
+  <confirmationNumber> @<TextSh> * ;
+  <orderDate> @<DateTimeSh> OR @<DateSh> * ;
+  <customer> @<PersonSh> OR @<OrganizationSh> * ;
+  <merchant> @<PersonSh> OR @<OrganizationSh> * ;
+  <broker> @<OrganizationSh> OR @<PersonSh> * ;
+  <orderedItem> @<ProductSh> OR @<ServiceSh> OR @<OrderItemSh> * ;
+  <isGift> @<BooleanSh> * ;
+  <billingAddress> @<PostalAddressSh> * ;
+  <paymentMethod> @<PaymentMethodSh> * ;
+  <seller> @<PersonSh> OR @<OrganizationSh> * ;
+  <paymentMethodId> @<TextSh> * ;
+  <discount> @<TextSh> OR @<NumberSh> * ;
+  <orderDelivery> @<ParcelDeliverySh> * ;
+  <acceptedOffer> @<OfferSh> * ;
+  <discountCurrency> @<TextSh> * ;
+  <paymentDueDate> @<DateSh> OR @<DateTimeSh> * ;
+  <discountCode> @<TextSh> * ;
+}
+
+<TVClipSh> EXTENDS @<Clip> {
+  a [<TVClip>] ;
+  <partOfTVSeries> @<TVSeriesSh> * ;
+}
+
+<NailSalonSh> EXTENDS @<HealthAndBeautyBusiness> {
+  a [<NailSalon>] ;
+}
+
+<ContactPointSh> EXTENDS @<StructuredValue> {
+  a [<ContactPoint>] ;
+  <serviceArea> @<PlaceSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> * ;
+  <hoursAvailable> @<OpeningHoursSpecificationSh> * ;
+  <contactOption> @<ContactPointOptionSh> * ;
+  <availableLanguage> @<LanguageSh> OR @<TextSh> * ;
+  <telephone> @<TextSh> * ;
+  <email> @<TextSh> * ;
+  <contactType> @<TextSh> * ;
+  <productSupported> @<TextSh> OR @<ProductSh> * ;
+  <faxNumber> @<TextSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+}
+
+<TelevisionChannelSh> EXTENDS @<BroadcastChannel> {
+  a [<TelevisionChannel>] ;
+}
+
+<GovernmentBuildingSh> EXTENDS @<CivicStructure> {
+  a [<GovernmentBuilding>] ;
+}
+
+<EmergencyServiceSh> EXTENDS @<LocalBusiness> {
+  a [<EmergencyService>] ;
+}
+
+<FinancialServiceSh> EXTENDS @<LocalBusiness> {
+  a [<FinancialService>] ;
+  <feesAndCommissionsSpecification> @<URLSh> OR @<TextSh> * ;
+}
+
+<VideoObjectSh> EXTENDS @<MediaObject> {
+  a [<VideoObject>] ;
+  <actor> @<PersonSh> * ;
+  <videoFrameSize> @<TextSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <videoQuality> @<TextSh> * ;
+  <director> @<PersonSh> * ;
+  <transcript> @<TextSh> * ;
+  <thumbnail> @<ImageObjectSh> * ;
+  <caption> @<TextSh> OR @<MediaObjectSh> * ;
+  <actors> @<PersonSh> * ;
+}
+
+<MenuSh> EXTENDS @<CreativeWork> {
+  a [<Menu>] ;
+  <hasMenuItem> @<MenuItemSh> * ;
+  <hasMenuSection> @<MenuSectionSh> * ;
+}
+
+<PeriodicalSh> EXTENDS @<CreativeWorkSeries> {
+  a [<Periodical>] ;
+}
+
+<MovieSeriesSh> EXTENDS @<CreativeWorkSeries> {
+  a [<MovieSeries>] ;
+  <actor> @<PersonSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <actors> @<PersonSh> * ;
+}
+
+<SeriesSh> EXTENDS @<Intangible> {
+  a [<Series>] ;
+}
+
+<ElectricianSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<Electrician>] ;
+}
+
+<WarrantyScopeSh> EXTENDS @<Enumeration> {
+  a [<WarrantyScope>] ;
+}
+
+<CollectionPageSh> EXTENDS @<WebPage> {
+  a [<CollectionPage>] ;
+}
+
+<PhotographActionSh> EXTENDS @<CreateAction> {
+  a [<PhotographAction>] ;
+}
+
+<HealthAndBeautyBusinessSh> EXTENDS @<LocalBusiness> {
+  a [<HealthAndBeautyBusiness>] ;
+}
+
+<LegislativeBuildingSh> EXTENDS @<GovernmentBuilding> {
+  a [<LegislativeBuilding>] ;
+}
+
+<UserCheckinsSh> EXTENDS @<UserInteraction> {
+  a [<UserCheckins>] ;
+}
+
+<VideoGameSeriesSh> EXTENDS @<CreativeWorkSeries> {
+  a [<VideoGameSeries>] ;
+  <gameItem> @<ThingSh> * ;
+  <seasons> @<CreativeWorkSeasonSh> * ;
+  <gamePlatform> @<URLSh> OR @<ThingSh> OR @<TextSh> * ;
+  <actor> @<PersonSh> * ;
+  <numberOfEpisodes> @<IntegerSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <season> @<CreativeWorkSeasonSh> * ;
+  <episodes> @<EpisodeSh> * ;
+  <cheatCode> @<CreativeWorkSh> * ;
+  <characterAttribute> @<ThingSh> * ;
+  <gameLocation> @<PlaceSh> OR @<PostalAddressSh> OR @<URLSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <containsSeason> @<CreativeWorkSeasonSh> * ;
+  <directors> @<PersonSh> * ;
+  <playMode> @<GamePlayModeSh> * ;
+  <numberOfSeasons> @<IntegerSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <quest> @<ThingSh> * ;
+  <numberOfPlayers> @<QuantitativeValueSh> * ;
+  <actors> @<PersonSh> * ;
+  <episode> @<EpisodeSh> * ;
+}
+
+<BroadcastServiceSh> EXTENDS @<Service> {
+  a [<BroadcastService>] ;
+  <broadcastFrequency> @<TextSh> OR @<BroadcastFrequencySpecificationSh> * ;
+  <broadcastTimezone> @<TextSh> * ;
+  <videoFormat> @<TextSh> * ;
+  <broadcastAffiliateOf> @<OrganizationSh> * ;
+  <parentService> @<BroadcastServiceSh> * ;
+  <broadcastDisplayName> @<TextSh> * ;
+  <area> @<PlaceSh> * ;
+  <hasBroadcastChannel> @<BroadcastChannelSh> * ;
+  <broadcaster> @<OrganizationSh> * ;
+}
+
+<WearActionSh> EXTENDS @<UseAction> {
+  a [<WearAction>] ;
+}
+
+<TravelAgencySh> EXTENDS @<LocalBusiness> {
+  a [<TravelAgency>] ;
+}
+
+<PerformingGroupSh> EXTENDS @<Organization> {
+  a [<PerformingGroup>] ;
+}
+
+<HostelSh> EXTENDS @<LodgingBusiness> {
+  a [<Hostel>] ;
+}
+
+<BankOrCreditUnionSh> EXTENDS @<FinancialService> {
+  a [<BankOrCreditUnion>] ;
+}
+
+<QuantitySh> EXTENDS @<Intangible> {
+  a [<Quantity>] ;
+}
+
+<VideoGallerySh> EXTENDS @<CollectionPage> {
+  a [<VideoGallery>] ;
+}
+
+<EducationalAudienceSh> EXTENDS @<Audience> {
+  a [<EducationalAudience>] ;
+  <educationalRole> @<TextSh> * ;
+}
+
+<CityHallSh> EXTENDS @<GovernmentBuilding> {
+  a [<CityHall>] ;
+}
+
+<ComedyEventSh> EXTENDS @<Event> {
+  a [<ComedyEvent>] ;
+}
+
+<DonateActionSh> EXTENDS @<TradeAction> {
+  a [<DonateAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<BrandSh> EXTENDS @<Intangible> {
+  a [<Brand>] ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <logo> @<ImageObjectSh> OR @<URLSh> * ;
+  <review> @<ReviewSh> * ;
+  <slogan> @<TextSh> * ;
+}
+
+<MovingCompanySh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<MovingCompany>] ;
+}
+
+<QuestionSh> EXTENDS @<CreativeWork> {
+  a [<Question>] ;
+  <upvoteCount> @<IntegerSh> * ;
+  <answerCount> @<IntegerSh> * ;
+  <acceptedAnswer> @<AnswerSh> OR @<ItemListSh> * ;
+  <suggestedAnswer> @<AnswerSh> OR @<ItemListSh> * ;
+  <downvoteCount> @<IntegerSh> * ;
+}
+
+<BorrowActionSh> EXTENDS @<TransferAction> {
+  a [<BorrowAction>] ;
+  <lender> @<PersonSh> OR @<OrganizationSh> * ;
+}
+
+<GardenStoreSh> EXTENDS @<Store> {
+  a [<GardenStore>] ;
+}
+
+<ReviewActionSh> EXTENDS @<AssessAction> {
+  a [<ReviewAction>] ;
+  <resultReview> @<ReviewSh> * ;
+}
+
+<UserCommentsSh> EXTENDS @<UserInteraction> {
+  a [<UserComments>] ;
+  <commentText> @<TextSh> * ;
+  <discusses> @<CreativeWorkSh> * ;
+  <commentTime> @<DateTimeSh> OR @<DateSh> * ;
+  <creator> @<OrganizationSh> OR @<PersonSh> * ;
+  <replyToUrl> @<URLSh> * ;
+}
+
+<PaintActionSh> EXTENDS @<CreateAction> {
+  a [<PaintAction>] ;
+}
+
+<BlogSh> EXTENDS @<CreativeWork> {
+  a [<Blog>] ;
+  <blogPosts> @<BlogPostingSh> * ;
+  <blogPost> @<BlogPostingSh> * ;
+  <issn> @<TextSh> * ;
+}
+
+<SportsActivityLocationSh> EXTENDS @<LocalBusiness> {
+  a [<SportsActivityLocation>] ;
+}
+
+<WarrantyPromiseSh> EXTENDS @<StructuredValue> {
+  a [<WarrantyPromise>] ;
+  <durationOfWarranty> @<QuantitativeValueSh> * ;
+  <warrantyScope> @<WarrantyScopeSh> * ;
+}
+
+<EmployerAggregateRatingSh> EXTENDS @<AggregateRating> {
+  a [<EmployerAggregateRating>] ;
+}
+
+<EventSh> EXTENDS @<Thing> {
+  a [<Event>] ;
+  <about> @<ThingSh> * ;
+  <funder> @<OrganizationSh> OR @<PersonSh> * ;
+  <subEvent> @<EventSh> * ;
+  <workFeatured> @<CreativeWorkSh> * ;
+  <audience> @<AudienceSh> * ;
+  <remainingAttendeeCapacity> @<IntegerSh> * ;
+  <actor> @<PersonSh> * ;
+  <performers> @<OrganizationSh> OR @<PersonSh> * ;
+  <endDate> @<DateSh> OR @<DateTimeSh> * ;
+  <doorTime> @<DateTimeSh> OR @<TimeSh> * ;
+  <contributor> @<OrganizationSh> OR @<PersonSh> * ;
+  <maximumAttendeeCapacity> @<IntegerSh> * ;
+  <typicalAgeRange> @<TextSh> * ;
+  <organizer> @<OrganizationSh> OR @<PersonSh> * ;
+  <attendees> @<PersonSh> OR @<OrganizationSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <subEvents> @<EventSh> * ;
+  <offers> @<OfferSh> * ;
+  <inLanguage> @<TextSh> OR @<LanguageSh> * ;
+  <attendee> @<OrganizationSh> OR @<PersonSh> * ;
+  <workPerformed> @<CreativeWorkSh> * ;
+  <eventStatus> @<EventStatusTypeSh> * ;
+  <startDate> @<DateTimeSh> OR @<DateSh> * ;
+  <director> @<PersonSh> * ;
+  <superEvent> @<EventSh> * ;
+  <duration> @<DurationSh> * ;
+  <translator> @<OrganizationSh> OR @<PersonSh> * ;
+  <previousStartDate> @<DateSh> * ;
+  <review> @<ReviewSh> * ;
+  <sponsor> @<PersonSh> OR @<OrganizationSh> * ;
+  <location> @<PlaceSh> OR @<TextSh> OR @<PostalAddressSh> * ;
+  <recordedIn> @<CreativeWorkSh> * ;
+  <composer> @<PersonSh> OR @<OrganizationSh> * ;
+  <isAccessibleForFree> @<BooleanSh> * ;
+  <performer> @<OrganizationSh> OR @<PersonSh> * ;
+}
+
+<HouseSh> EXTENDS @<Accommodation> {
+  a [<House>] ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<AdultEntertainmentSh> EXTENDS @<EntertainmentBusiness> {
+  a [<AdultEntertainment>] ;
+}
+
+<DriveWheelConfigurationValueSh> EXTENDS @<QualitativeValue> {
+  a [<DriveWheelConfigurationValue>] ;
+}
+
+<RoleSh> EXTENDS @<Intangible> {
+  a [<Role>] ;
+  <endDate> @<DateSh> OR @<DateTimeSh> * ;
+  <startDate> @<DateTimeSh> OR @<DateSh> * ;
+  <namedPosition> @<TextSh> OR @<URLSh> * ;
+  <roleName> @<URLSh> OR @<TextSh> * ;
+}
+
+<CitySh> EXTENDS @<AdministrativeArea> {
+  a [<City>] ;
+}
+
+<ConsumeActionSh> EXTENDS @<Action> {
+  a [<ConsumeAction>] ;
+  <actionAccessibilityRequirement> @<ActionAccessSpecificationSh> * ;
+  <expectsAcceptanceOf> @<OfferSh> * ;
+}
+
+<ScreeningEventSh> EXTENDS @<Event> {
+  a [<ScreeningEvent>] ;
+  <videoFormat> @<TextSh> * ;
+  <workPresented> @<MovieSh> * ;
+}
+
+<ArriveActionSh> EXTENDS @<MoveAction> {
+  a [<ArriveAction>] ;
+}
+
+<CreateActionSh> EXTENDS @<Action> {
+  a [<CreateAction>] ;
+}
+
+<ScheduleActionSh> EXTENDS @<PlanAction> {
+  a [<ScheduleAction>] ;
+}
+
+<DentistSh> EXTENDS @<MedicalOrganization> @<MedicalBusiness> @<LocalBusiness> {
+  a [<Dentist>] ;
+}
+
+<DiscoverActionSh> EXTENDS @<FindAction> {
+  a [<DiscoverAction>] ;
+}
+
+<TattooParlorSh> EXTENDS @<HealthAndBeautyBusiness> {
+  a [<TattooParlor>] ;
+}
+
+<EndorsementRatingSh> EXTENDS @<Rating> {
+  a [<EndorsementRating>] ;
+}
+
+<ReservoirSh> EXTENDS @<BodyOfWater> {
+  a [<Reservoir>] ;
+}
+
+<MusicEventSh> EXTENDS @<Event> {
+  a [<MusicEvent>] ;
+}
+
+<StoreSh> EXTENDS @<LocalBusiness> {
+  a [<Store>] ;
+}
+
+<MonetaryAmountSh> EXTENDS @<StructuredValue> {
+  a [<MonetaryAmount>] ;
+  <minValue> @<NumberSh> * ;
+  <value> @<StructuredValueSh> OR @<TextSh> OR @<NumberSh> OR @<BooleanSh> * ;
+  <currency> @<TextSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <maxValue> @<NumberSh> * ;
+}
+
+<HairSalonSh> EXTENDS @<HealthAndBeautyBusiness> {
+  a [<HairSalon>] ;
+}
+
+<DaySpaSh> EXTENDS @<HealthAndBeautyBusiness> {
+  a [<DaySpa>] ;
+}
+
+<EngineSpecificationSh> EXTENDS @<StructuredValue> {
+  a [<EngineSpecification>] ;
+  <fuelType> @<QualitativeValueSh> OR @<TextSh> OR @<URLSh> * ;
+}
+
+<ActivateActionSh> EXTENDS @<ControlAction> {
+  a [<ActivateAction>] ;
+}
+
+<EventVenueSh> EXTENDS @<CivicStructure> {
+  a [<EventVenue>] ;
+}
+
+<RadioEpisodeSh> EXTENDS @<Episode> {
+  a [<RadioEpisode>] ;
+}
+
+<ElementarySchoolSh> EXTENDS @<EducationalOrganization> {
+  a [<ElementarySchool>] ;
+}
+
+<ReplaceActionSh> EXTENDS @<UpdateAction> {
+  a [<ReplaceAction>] ;
+  <replacee> @<ThingSh> * ;
+  <replacer> @<ThingSh> * ;
+}
+
+<CreditCardSh> EXTENDS @<LoanOrCredit> @<PaymentCard> {
+  a [<CreditCard>] ;
+}
+
+<OpeningHoursSpecificationSh> EXTENDS @<StructuredValue> {
+  a [<OpeningHoursSpecification>] ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <opens> @<TimeSh> * ;
+  <closes> @<TimeSh> * ;
+  <dayOfWeek> @<DayOfWeekSh> * ;
+}
+
+<DislikeActionSh> EXTENDS @<ReactAction> {
+  a [<DislikeAction>] ;
+}
+
+<PlayActionSh> EXTENDS @<Action> {
+  a [<PlayAction>] ;
+  <audience> @<AudienceSh> * ;
+  <event> @<EventSh> * ;
+}
+
+<FAQPageSh> EXTENDS @<WebPage> {
+  a [<FAQPage>] ;
+}
+
+<TieActionSh> EXTENDS @<AchieveAction> {
+  a [<TieAction>] ;
+}
+
+<CorporationSh> EXTENDS @<Organization> {
+  a [<Corporation>] ;
+  <tickerSymbol> @<TextSh> * ;
+}
+
+<ItemListSh> EXTENDS @<Intangible> {
+  a [<ItemList>] ;
+  <itemListElement> @<ThingSh> OR @<TextSh> OR @<ListItemSh> * ;
+  <itemListOrder> @<ItemListOrderTypeSh> OR @<TextSh> * ;
+  <numberOfItems> @<IntegerSh> * ;
+}
+
+<DeliveryMethodSh> EXTENDS @<Enumeration> {
+  a [<DeliveryMethod>] ;
+}
+
+<WinerySh> EXTENDS @<FoodEstablishment> {
+  a [<Winery>] ;
+}
+
+<InformActionSh> EXTENDS @<CommunicateAction> {
+  a [<InformAction>] ;
+  <event> @<EventSh> * ;
+}
+
+<ReturnActionSh> EXTENDS @<TransferAction> {
+  a [<ReturnAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<MeetingRoomSh> EXTENDS @<Room> {
+  a [<MeetingRoom>] ;
+}
+
+<MonetaryAmountDistributionSh> EXTENDS @<QuantitativeValueDistribution> {
+  a [<MonetaryAmountDistribution>] ;
+  <currency> @<TextSh> * ;
+}
+
+<JoinActionSh> EXTENDS @<InteractAction> {
+  a [<JoinAction>] ;
+  <event> @<EventSh> * ;
+}
+
+<RiverBodyOfWaterSh> EXTENDS @<BodyOfWater> {
+  a [<RiverBodyOfWater>] ;
+}
+
+<SearchActionSh> EXTENDS @<Action> {
+  a [<SearchAction>] ;
+  <query> @<TextSh> * ;
+}
+
+<HVACBusinessSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<HVACBusiness>] ;
+}
+
+<TaxiStandSh> EXTENDS @<CivicStructure> {
+  a [<TaxiStand>] ;
+}
+
+<ProductModelSh> EXTENDS @<Product> {
+  a [<ProductModel>] ;
+  <predecessorOf> @<ProductModelSh> * ;
+  <successorOf> @<ProductModelSh> * ;
+  <isVariantOf> @<ProductModelSh> * ;
+}
+
+<CatholicChurchSh> EXTENDS @<Church> {
+  a [<CatholicChurch>] ;
+}
+
+<MovieClipSh> EXTENDS @<Clip> {
+  a [<MovieClip>] ;
+}
+
+<ActionStatusTypeSh> EXTENDS @<Enumeration> {
+  a [<ActionStatusType>] ;
+}
+
+<WriteActionSh> EXTENDS @<CreateAction> {
+  a [<WriteAction>] ;
+  <inLanguage> @<TextSh> OR @<LanguageSh> * ;
+  <language> @<LanguageSh> * ;
+}
+
+<MusicAlbumProductionTypeSh> EXTENDS @<Enumeration> {
+  a [<MusicAlbumProductionType>] ;
+}
+
+<LocksmithSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<Locksmith>] ;
+}
+
+<LandformSh> EXTENDS @<Place> {
+  a [<Landform>] ;
+}
+
+<EpisodeSh> EXTENDS @<CreativeWork> {
+  a [<Episode>] ;
+  <actor> @<PersonSh> * ;
+  <partOfSeries> @<CreativeWorkSeriesSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <partOfSeason> @<CreativeWorkSeasonSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <episodeNumber> @<TextSh> OR @<IntegerSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <actors> @<PersonSh> * ;
+}
+
+<OceanBodyOfWaterSh> EXTENDS @<BodyOfWater> {
+  a [<OceanBodyOfWater>] ;
+}
+
+<MedicalOrganizationSh> EXTENDS @<Organization> {
+  a [<MedicalOrganization>] ;
+}
+
+<TrainReservationSh> EXTENDS @<Reservation> {
+  a [<TrainReservation>] ;
+}
+
+<MusicVenueSh> EXTENDS @<CivicStructure> {
+  a [<MusicVenue>] ;
+}
+
+<ReviewSh> EXTENDS @<CreativeWork> {
+  a [<Review>] ;
+  <reviewRating> @<RatingSh> * ;
+  <itemReviewed> @<ThingSh> * ;
+  <reviewBody> @<TextSh> * ;
+  <reviewAspect> @<TextSh> * ;
+}
+
+<PostalAddressSh> EXTENDS @<ContactPoint> {
+  a [<PostalAddress>] ;
+  <postOfficeBoxNumber> @<TextSh> * ;
+  <streetAddress> @<TextSh> * ;
+  <addressCountry> @<CountrySh> OR @<TextSh> * ;
+  <addressRegion> @<TextSh> * ;
+  <postalCode> @<TextSh> * ;
+  <addressLocality> @<TextSh> * ;
+}
+
+<ClaimReviewSh> EXTENDS @<Review> {
+  a [<ClaimReview>] ;
+  <claimReviewed> @<TextSh> * ;
+}
+
+<CollegeOrUniversitySh> EXTENDS @<EducationalOrganization> {
+  a [<CollegeOrUniversity>] ;
+}
+
+<SoftwareSourceCodeSh> EXTENDS @<CreativeWork> {
+  a [<SoftwareSourceCode>] ;
+  <targetProduct> @<SoftwareApplicationSh> * ;
+  <codeRepository> @<URLSh> * ;
+  <programmingLanguage> @<ComputerLanguageSh> OR @<TextSh> * ;
+  <codeSampleType> @<TextSh> * ;
+  <runtimePlatform> @<TextSh> * ;
+  <sampleType> @<TextSh> * ;
+  <runtime> @<TextSh> * ;
+}
+
+<ClipSh> EXTENDS @<CreativeWork> {
+  a [<Clip>] ;
+  <actor> @<PersonSh> * ;
+  <partOfSeries> @<CreativeWorkSeriesSh> * ;
+  <partOfEpisode> @<EpisodeSh> * ;
+  <partOfSeason> @<CreativeWorkSeasonSh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <directors> @<PersonSh> * ;
+  <director> @<PersonSh> * ;
+  <actors> @<PersonSh> * ;
+  <clipNumber> @<TextSh> OR @<IntegerSh> * ;
+}
+
+<SeatSh> EXTENDS @<Intangible> {
+  a [<Seat>] ;
+  <seatingType> @<TextSh> OR @<QualitativeValueSh> * ;
+  <seatSection> @<TextSh> * ;
+  <seatRow> @<TextSh> * ;
+  <seatNumber> @<TextSh> * ;
+}
+
+<WantActionSh> EXTENDS @<ReactAction> {
+  a [<WantAction>] ;
+}
+
+<ReadActionSh> EXTENDS @<ConsumeAction> {
+  a [<ReadAction>] ;
+}
+
+<SpecialtySh> EXTENDS @<Enumeration> {
+  a [<Specialty>] ;
+}
+
+<TaxiServiceSh> EXTENDS @<Service> {
+  a [<TaxiService>] ;
+}
+
+<ItemAvailabilitySh> EXTENDS @<Enumeration> {
+  a [<ItemAvailability>] ;
+}
+
+<OccupationSh> EXTENDS @<Intangible> {
+  a [<Occupation>] ;
+  <occupationLocation> @<AdministrativeAreaSh> * ;
+  <skills> @<DefinedTermSh> OR @<TextSh> * ;
+  <responsibilities> @<TextSh> * ;
+  <occupationalCategory> @<CategoryCodeSh> OR @<TextSh> * ;
+  <experienceRequirements> @<TextSh> * ;
+  <estimatedSalary> @<NumberSh> OR @<MonetaryAmountDistributionSh> OR @<MonetaryAmountSh> * ;
+}
+
+<ArtGallerySh> EXTENDS @<EntertainmentBusiness> {
+  a [<ArtGallery>] ;
+}
+
+<PlumberSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<Plumber>] ;
+}
+
+<PreschoolSh> EXTENDS @<EducationalOrganization> {
+  a [<Preschool>] ;
+}
+
+<RejectActionSh> EXTENDS @<AllocateAction> {
+  a [<RejectAction>] ;
+}
+
+<GeoCircleSh> EXTENDS @<GeoShape> {
+  a [<GeoCircle>] ;
+  <geoRadius> @<NumberSh> OR @<DistanceSh> OR @<TextSh> * ;
+  <geoMidpoint> @<GeoCoordinatesSh> * ;
+}
+
+<BusinessFunctionSh> EXTENDS @<Enumeration> {
+  a [<BusinessFunction>] ;
+}
+
+<EnergySh> EXTENDS @<Quantity> {
+  a [<Energy>] ;
+}
+
+<FurnitureStoreSh> EXTENDS @<Store> {
+  a [<FurnitureStore>] ;
+}
+
+<BusStopSh> EXTENDS @<CivicStructure> {
+  a [<BusStop>] ;
+}
+
+<MotorcycleRepairSh> EXTENDS @<AutomotiveBusiness> {
+  a [<MotorcycleRepair>] ;
+}
+
+<GovernmentPermitSh> EXTENDS @<Permit> {
+  a [<GovernmentPermit>] ;
+}
+
+<InsertActionSh> EXTENDS @<AddAction> {
+  a [<InsertAction>] ;
+  <toLocation> @<PlaceSh> * ;
+}
+
+<ResortSh> EXTENDS @<LodgingBusiness> {
+  a [<Resort>] ;
+}
+
+<InvoiceSh> EXTENDS @<Intangible> {
+  a [<Invoice>] ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <paymentDue> @<DateTimeSh> * ;
+  <billingPeriod> @<DurationSh> * ;
+  <confirmationNumber> @<TextSh> * ;
+  <accountId> @<TextSh> * ;
+  <scheduledPaymentDate> @<DateSh> * ;
+  <customer> @<PersonSh> OR @<OrganizationSh> * ;
+  <category> @<TextSh> OR @<ThingSh> OR @<PhysicalActivityCategorySh> * ;
+  <paymentStatus> @<PaymentStatusTypeSh> OR @<TextSh> * ;
+  <broker> @<OrganizationSh> OR @<PersonSh> * ;
+  <referencesOrder> @<OrderSh> * ;
+  <paymentMethod> @<PaymentMethodSh> * ;
+  <paymentMethodId> @<TextSh> * ;
+  <minimumPaymentDue> @<MonetaryAmountSh> OR @<PriceSpecificationSh> * ;
+  <totalPaymentDue> @<MonetaryAmountSh> OR @<PriceSpecificationSh> * ;
+  <paymentDueDate> @<DateSh> OR @<DateTimeSh> * ;
+}
+
+<TableSh> EXTENDS @<WebPageElement> {
+  a [<Table>] ;
+}
+
+<URLSh> EXTENDS @<Text> {
+  a [<URL>] ;
+}
+
+<CompoundPriceSpecificationSh> EXTENDS @<PriceSpecification> {
+  a [<CompoundPriceSpecification>] ;
+  <priceComponent> @<UnitPriceSpecificationSh> * ;
+}
+
+<PeopleAudienceSh> EXTENDS @<Audience> {
+  a [<PeopleAudience>] ;
+  <suggestedMaxAge> @<NumberSh> * ;
+  <requiredMinAge> @<IntegerSh> * ;
+  <requiredGender> @<TextSh> * ;
+  <suggestedGender> @<TextSh> * ;
+  <requiredMaxAge> @<IntegerSh> * ;
+  <suggestedMinAge> @<NumberSh> * ;
+}
+
+<GovernmentOrganizationSh> EXTENDS @<Organization> {
+  a [<GovernmentOrganization>] ;
+}
+
+<FoodEstablishmentReservationSh> EXTENDS @<Reservation> {
+  a [<FoodEstablishmentReservation>] ;
+  <startTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <endTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <partySize> @<IntegerSh> OR @<QuantitativeValueSh> * ;
+}
+
+<DataCatalogSh> EXTENDS @<CreativeWork> {
+  a [<DataCatalog>] ;
+  <dataset> @<DatasetSh> * ;
+}
+
+<PaymentChargeSpecificationSh> EXTENDS @<PriceSpecification> {
+  a [<PaymentChargeSpecification>] ;
+  <appliesToPaymentMethod> @<PaymentMethodSh> * ;
+  <appliesToDeliveryMethod> @<DeliveryMethodSh> * ;
+}
+
+<BusReservationSh> EXTENDS @<Reservation> {
+  a [<BusReservation>] ;
+}
+
+<TaxiSh> EXTENDS @<Service> {
+  a [<Taxi>] ;
+}
+
+<ItemPageSh> EXTENDS @<WebPage> {
+  a [<ItemPage>] ;
+}
+
+<PhysicianSh> EXTENDS @<MedicalBusiness> @<MedicalOrganization> {
+  a [<Physician>] ;
+}
+
+<RsvpResponseTypeSh> EXTENDS @<Enumeration> {
+  a [<RsvpResponseType>] ;
+}
+
+<OrderItemSh> EXTENDS @<Intangible> {
+  a [<OrderItem>] ;
+  <orderItemStatus> @<OrderStatusSh> * ;
+  <orderQuantity> @<NumberSh> * ;
+  <orderedItem> @<ProductSh> OR @<ServiceSh> OR @<OrderItemSh> * ;
+  <orderDelivery> @<ParcelDeliverySh> * ;
+  <orderItemNumber> @<TextSh> * ;
+}
+
+<FinancialProductSh> EXTENDS @<Service> {
+  a [<FinancialProduct>] ;
+  <annualPercentageRate> @<NumberSh> OR @<QuantitativeValueSh> * ;
+  <feesAndCommissionsSpecification> @<URLSh> OR @<TextSh> * ;
+  <interestRate> @<NumberSh> OR @<QuantitativeValueSh> * ;
+}
+
+<BusinessEntityTypeSh> EXTENDS @<Enumeration> {
+  a [<BusinessEntityType>] ;
+}
+
+<TipActionSh> EXTENDS @<TradeAction> {
+  a [<TipAction>] ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+}
+
+<HowToDirectionSh> EXTENDS @<CreativeWork> @<ListItem> {
+  a [<HowToDirection>] ;
+  <duringMedia> @<URLSh> OR @<MediaObjectSh> * ;
+  <beforeMedia> @<URLSh> OR @<MediaObjectSh> * ;
+  <prepTime> @<DurationSh> * ;
+  <performTime> @<DurationSh> * ;
+  <totalTime> @<DurationSh> * ;
+  <supply> @<HowToSupplySh> OR @<TextSh> * ;
+  <afterMedia> @<MediaObjectSh> OR @<URLSh> * ;
+  <tool> @<TextSh> OR @<HowToToolSh> * ;
+}
+
+<ApartmentSh> EXTENDS @<Accommodation> {
+  a [<Apartment>] ;
+  <occupancy> @<QuantitativeValueSh> * ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<NoteDigitalDocumentSh> EXTENDS @<DigitalDocument> {
+  a [<NoteDigitalDocument>] ;
+}
+
+<ServiceSh> EXTENDS @<Intangible> {
+  a [<Service>] ;
+  <serviceAudience> @<AudienceSh> * ;
+  <serviceArea> @<PlaceSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> * ;
+  <produces> @<ThingSh> * ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <audience> @<AudienceSh> * ;
+  <hasOfferCatalog> @<OfferCatalogSh> * ;
+  <hoursAvailable> @<OpeningHoursSpecificationSh> * ;
+  <providerMobility> @<TextSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <offers> @<OfferSh> * ;
+  <award> @<TextSh> * ;
+  <category> @<TextSh> OR @<ThingSh> OR @<PhysicalActivityCategorySh> * ;
+  <broker> @<OrganizationSh> OR @<PersonSh> * ;
+  <serviceOutput> @<ThingSh> * ;
+  <logo> @<ImageObjectSh> OR @<URLSh> * ;
+  <isSimilarTo> @<ServiceSh> OR @<ProductSh> * ;
+  <isRelatedTo> @<ServiceSh> OR @<ProductSh> * ;
+  <availableChannel> @<ServiceChannelSh> * ;
+  <review> @<ReviewSh> * ;
+  <serviceType> @<TextSh> * ;
+  <slogan> @<TextSh> * ;
+  <brand> @<BrandSh> OR @<OrganizationSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+}
+
+<CampgroundSh> EXTENDS @<CivicStructure> @<LodgingBusiness> {
+  a [<Campground>] ;
+}
+
+<TennisComplexSh> EXTENDS @<SportsActivityLocation> {
+  a [<TennisComplex>] ;
+}
+
+<ThingSh> {
+  a [<Thing>] ;
+  <sameAs> @<URLSh> * ;
+  <alternateName> @<TextSh> * ;
+  <image> @<ImageObjectSh> OR @<URLSh> * ;
+  <additionalType> @<URLSh> * ;
+  <name> @<TextSh> * ;
+  <identifier> @<PropertyValueSh> OR @<URLSh> OR @<TextSh> * ;
+  <subjectOf> @<CreativeWorkSh> OR @<EventSh> * ;
+  <url> @<URLSh> * ;
+  <potentialAction> @<ActionSh> * ;
+  <mainEntityOfPage> @<URLSh> OR @<CreativeWorkSh> * ;
+  <description> @<TextSh> * ;
+  <disambiguatingDescription> @<TextSh> * ;
+}
+
+<PhotographSh> EXTENDS @<CreativeWork> {
+  a [<Photograph>] ;
+}
+
+<SubwayStationSh> EXTENDS @<CivicStructure> {
+  a [<SubwayStation>] ;
+}
+
+<CourthouseSh> EXTENDS @<GovernmentBuilding> {
+  a [<Courthouse>] ;
+}
+
+<ReservationStatusTypeSh> EXTENDS @<Enumeration> {
+  a [<ReservationStatusType>] ;
+}
+
+<AutoWashSh> EXTENDS @<AutomotiveBusiness> {
+  a [<AutoWash>] ;
+}
+
+<HardwareStoreSh> EXTENDS @<Store> {
+  a [<HardwareStore>] ;
+}
+
+<AskActionSh> EXTENDS @<CommunicateAction> {
+  a [<AskAction>] ;
+  <question> @<QuestionSh> * ;
+}
+
+<VisualArtsEventSh> EXTENDS @<Event> {
+  a [<VisualArtsEvent>] ;
+}
+
+<DigitalDocumentSh> EXTENDS @<CreativeWork> {
+  a [<DigitalDocument>] ;
+  <hasDigitalDocumentPermission> @<DigitalDocumentPermissionSh> * ;
+}
+
+<DanceGroupSh> EXTENDS @<PerformingGroup> {
+  a [<DanceGroup>] ;
+}
+
+<BeautySalonSh> EXTENDS @<HealthAndBeautyBusiness> {
+  a [<BeautySalon>] ;
+}
+
+<CommunicateActionSh> EXTENDS @<InteractAction> {
+  a [<CommunicateAction>] ;
+  <about> @<ThingSh> * ;
+  <inLanguage> @<TextSh> OR @<LanguageSh> * ;
+  <recipient> @<PersonSh> OR @<ContactPointSh> OR @<OrganizationSh> OR @<AudienceSh> * ;
+  <language> @<LanguageSh> * ;
+}
+
+<MenuItemSh> EXTENDS @<Intangible> {
+  a [<MenuItem>] ;
+  <menuAddOn> @<MenuSectionSh> OR @<MenuItemSh> * ;
+  <nutrition> @<NutritionInformationSh> * ;
+  <offers> @<OfferSh> * ;
+  <suitableForDiet> @<RestrictedDietSh> * ;
+}
+
+<CurrencyConversionServiceSh> EXTENDS @<FinancialProduct> {
+  a [<CurrencyConversionService>] ;
+}
+
+<RoofingContractorSh> EXTENDS @<HomeAndConstructionBusiness> {
+  a [<RoofingContractor>] ;
+}
+
+<GovernmentServiceSh> EXTENDS @<Service> {
+  a [<GovernmentService>] ;
+  <serviceOperator> @<OrganizationSh> * ;
+}
+
+<DeliveryEventSh> EXTENDS @<Event> {
+  a [<DeliveryEvent>] ;
+  <hasDeliveryMethod> @<DeliveryMethodSh> * ;
+  <availableThrough> @<DateTimeSh> * ;
+  <availableFrom> @<DateTimeSh> * ;
+  <accessCode> @<TextSh> * ;
+}
+
+<HobbyShopSh> EXTENDS @<Store> {
+  a [<HobbyShop>] ;
+}
+
+<FollowActionSh> EXTENDS @<InteractAction> {
+  a [<FollowAction>] ;
+  <followee> @<PersonSh> OR @<OrganizationSh> * ;
+}
+
+<ChildrensEventSh> EXTENDS @<Event> {
+  a [<ChildrensEvent>] ;
+}
+
+<RVParkSh> EXTENDS @<CivicStructure> {
+  a [<RVPark>] ;
+}
+
+<SingleFamilyResidenceSh> EXTENDS @<House> {
+  a [<SingleFamilyResidence>] ;
+  <occupancy> @<QuantitativeValueSh> * ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<WholesaleStoreSh> EXTENDS @<Store> {
+  a [<WholesaleStore>] ;
+}
+
+<BroadcastEventSh> EXTENDS @<PublicationEvent> {
+  a [<BroadcastEvent>] ;
+  <videoFormat> @<TextSh> * ;
+  <isLiveBroadcast> @<BooleanSh> * ;
+  <broadcastOfEvent> @<EventSh> * ;
+}
+
+<RentalCarReservationSh> EXTENDS @<Reservation> {
+  a [<RentalCarReservation>] ;
+  <pickupTime> @<DateTimeSh> * ;
+  <dropoffLocation> @<PlaceSh> * ;
+  <dropoffTime> @<DateTimeSh> * ;
+  <pickupLocation> @<PlaceSh> * ;
+}
+
+<TravelActionSh> EXTENDS @<MoveAction> {
+  a [<TravelAction>] ;
+  <distance> @<DistanceSh> * ;
+}
+
+<OrganizationRoleSh> EXTENDS @<Role> {
+  a [<OrganizationRole>] ;
+  <numberedPosition> @<NumberSh> * ;
+}
+
+<SkiResortSh> EXTENDS @<SportsActivityLocation> {
+  a [<SkiResort>] ;
+}
+
+<AutomatedTellerSh> EXTENDS @<FinancialService> {
+  a [<AutomatedTeller>] ;
+}
+
+<CanalSh> EXTENDS @<BodyOfWater> {
+  a [<Canal>] ;
+}
+
+<NGOSh> EXTENDS @<Organization> {
+  a [<NGO>] ;
+}
+
+<TVSeriesSh> EXTENDS @<CreativeWorkSeries> @<CreativeWork> {
+  a [<TVSeries>] ;
+  <seasons> @<CreativeWorkSeasonSh> * ;
+  <actor> @<PersonSh> * ;
+  <numberOfEpisodes> @<IntegerSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <season> @<CreativeWorkSeasonSh> * ;
+  <episodes> @<EpisodeSh> * ;
+  <countryOfOrigin> @<CountrySh> * ;
+  <musicBy> @<MusicGroupSh> OR @<PersonSh> * ;
+  <containsSeason> @<CreativeWorkSeasonSh> * ;
+  <directors> @<PersonSh> * ;
+  <numberOfSeasons> @<IntegerSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <actors> @<PersonSh> * ;
+  <episode> @<EpisodeSh> * ;
+}
+
+<AdministrativeAreaSh> EXTENDS @<Place> {
+  a [<AdministrativeArea>] ;
+}
+
+<BarOrPubSh> EXTENDS @<FoodEstablishment> {
+  a [<BarOrPub>] ;
+}
+
+<FloatSh> EXTENDS @<Number> {
+  a [<Float>] ;
+}
+
+<DataTypeSh> EXTENDS @<rdfs:Class> {
+  a [<DataType>] ;
+}
+
+<FMRadioChannelSh> EXTENDS @<RadioChannel> {
+  a [<FMRadioChannel>] ;
+}
+
+<DistanceSh> EXTENDS @<Quantity> {
+  a [<Distance>] ;
+}
+
+<MusicPlaylistSh> EXTENDS @<CreativeWork> {
+  a [<MusicPlaylist>] ;
+  <track> @<ItemListSh> OR @<MusicRecordingSh> * ;
+  <numTracks> @<IntegerSh> * ;
+  <tracks> @<MusicRecordingSh> * ;
+}
+
+<QuantitativeValueSh> EXTENDS @<StructuredValue> {
+  a [<QuantitativeValue>] ;
+  <unitCode> @<TextSh> OR @<URLSh> * ;
+  <minValue> @<NumberSh> * ;
+  <value> @<StructuredValueSh> OR @<TextSh> OR @<NumberSh> OR @<BooleanSh> * ;
+  <additionalProperty> @<PropertyValueSh> * ;
+  <valueReference> @<EnumerationSh> OR @<PropertyValueSh> OR @<QuantitativeValueSh> OR @<StructuredValueSh> OR @<QualitativeValueSh> * ;
+  <maxValue> @<NumberSh> * ;
+  <unitText> @<TextSh> * ;
+}
+
+<ScholarlyArticleSh> EXTENDS @<Article> {
+  a [<ScholarlyArticle>] ;
+}
+
+<BedDetailsSh> EXTENDS @<Intangible> {
+  a [<BedDetails>] ;
+  <typeOfBed> @<BedTypeSh> OR @<TextSh> * ;
+  <numberOfBeds> @<NumberSh> * ;
+}
+
+<BakerySh> EXTENDS @<FoodEstablishment> {
+  a [<Bakery>] ;
+}
+
+<NightClubSh> EXTENDS @<EntertainmentBusiness> {
+  a [<NightClub>] ;
+}
+
+<MensClothingStoreSh> EXTENDS @<Store> {
+  a [<MensClothingStore>] ;
+}
+
+<AcceptActionSh> EXTENDS @<AllocateAction> {
+  a [<AcceptAction>] ;
+}
+
+<LanguageSh> EXTENDS @<Intangible> {
+  a [<Language>] ;
+}
+
+<TrainTripSh> EXTENDS @<Trip> {
+  a [<TrainTrip>] ;
+  <departureStation> @<TrainStationSh> * ;
+  <arrivalPlatform> @<TextSh> * ;
+  <departurePlatform> @<TextSh> * ;
+  <trainName> @<TextSh> * ;
+  <trainNumber> @<TextSh> * ;
+  <arrivalStation> @<TrainStationSh> * ;
+}
+
+<TheaterGroupSh> EXTENDS @<PerformingGroup> {
+  a [<TheaterGroup>] ;
+}
+
+<ParcelDeliverySh> EXTENDS @<Intangible> {
+  a [<ParcelDelivery>] ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <trackingUrl> @<URLSh> * ;
+  <deliveryAddress> @<PostalAddressSh> * ;
+  <trackingNumber> @<TextSh> * ;
+  <hasDeliveryMethod> @<DeliveryMethodSh> * ;
+  <deliveryStatus> @<DeliveryEventSh> * ;
+  <carrier> @<OrganizationSh> * ;
+  <originAddress> @<PostalAddressSh> * ;
+  <itemShipped> @<ProductSh> * ;
+  <partOfOrder> @<OrderSh> * ;
+  <expectedArrivalFrom> @<DateSh> OR @<DateTimeSh> * ;
+  <expectedArrivalUntil> @<DateSh> OR @<DateTimeSh> * ;
+}
+
+<BoardingPolicyTypeSh> EXTENDS @<Enumeration> {
+  a [<BoardingPolicyType>] ;
+}
+
+<PondSh> EXTENDS @<BodyOfWater> {
+  a [<Pond>] ;
+}
+
+<AnswerSh> EXTENDS @<Comment> {
+  a [<Answer>] ;
+}
+
+<BrewerySh> EXTENDS @<FoodEstablishment> {
+  a [<Brewery>] ;
+}
+
+<AllocateActionSh> EXTENDS @<OrganizeAction> {
+  a [<AllocateAction>] ;
+}
+
+<ParentAudienceSh> EXTENDS @<PeopleAudience> {
+  a [<ParentAudience>] ;
+  <childMaxAge> @<NumberSh> * ;
+  <childMinAge> @<NumberSh> * ;
+}
+
+<RadioChannelSh> EXTENDS @<BroadcastChannel> {
+  a [<RadioChannel>] ;
+}
+
+<RoomSh> EXTENDS @<Accommodation> {
+  a [<Room>] ;
+}
+
+<PublicSwimmingPoolSh> EXTENDS @<SportsActivityLocation> {
+  a [<PublicSwimmingPool>] ;
+}
+
+<JobPostingSh> EXTENDS @<Intangible> {
+  a [<JobPosting>] ;
+  <jobLocation> @<PlaceSh> * ;
+  <benefits> @<TextSh> * ;
+  <incentiveCompensation> @<TextSh> * ;
+  <workHours> @<TextSh> * ;
+  <salaryCurrency> @<TextSh> * ;
+  <jobBenefits> @<TextSh> * ;
+  <datePosted> @<DateSh> * ;
+  <skills> @<DefinedTermSh> OR @<TextSh> * ;
+  <incentives> @<TextSh> * ;
+  <responsibilities> @<TextSh> * ;
+  <baseSalary> @<PriceSpecificationSh> OR @<MonetaryAmountSh> OR @<NumberSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <hiringOrganization> @<OrganizationSh> * ;
+  <relevantOccupation> @<OccupationSh> * ;
+  <specialCommitments> @<TextSh> * ;
+  <occupationalCategory> @<CategoryCodeSh> OR @<TextSh> * ;
+  <experienceRequirements> @<TextSh> * ;
+  <employmentType> @<TextSh> * ;
+  <estimatedSalary> @<NumberSh> OR @<MonetaryAmountDistributionSh> OR @<MonetaryAmountSh> * ;
+  <title> @<TextSh> * ;
+  <industry> @<TextSh> * ;
+}
+
+<MusicReleaseFormatTypeSh> EXTENDS @<Enumeration> {
+  a [<MusicReleaseFormatType>] ;
+}
+
+<ConversationSh> EXTENDS @<CreativeWork> {
+  a [<Conversation>] ;
+}
+
+<MediaObjectSh> EXTENDS @<CreativeWork> {
+  a [<MediaObject>] ;
+  <startTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <uploadDate> @<DateSh> * ;
+  <playerType> @<TextSh> * ;
+  <height> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+  <bitrate> @<TextSh> * ;
+  <requiresSubscription> @<MediaSubscriptionSh> OR @<BooleanSh> * ;
+  <regionsAllowed> @<PlaceSh> * ;
+  <endTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <contentSize> @<TextSh> * ;
+  <embedUrl> @<URLSh> * ;
+  <width> @<DistanceSh> OR @<QuantitativeValueSh> * ;
+  <contentUrl> @<URLSh> * ;
+  <associatedArticle> @<NewsArticleSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <duration> @<DurationSh> * ;
+  <encodesCreativeWork> @<CreativeWorkSh> * ;
+  <encodingFormat> @<TextSh> OR @<URLSh> * ;
+}
+
+<CemeterySh> EXTENDS @<CivicStructure> {
+  a [<Cemetery>] ;
+}
+
+<AccountingServiceSh> EXTENDS @<FinancialService> {
+  a [<AccountingService>] ;
+}
+
+<CheckInActionSh> EXTENDS @<CommunicateAction> {
+  a [<CheckInAction>] ;
+}
+
+<DayOfWeekSh> EXTENDS @<Enumeration> {
+  a [<DayOfWeek>] ;
+}
+
+<BusinessAudienceSh> EXTENDS @<Audience> {
+  a [<BusinessAudience>] ;
+  <yearsInOperation> @<QuantitativeValueSh> * ;
+  <yearlyRevenue> @<QuantitativeValueSh> * ;
+  <numberOfEmployees> @<QuantitativeValueSh> * ;
+}
+
+<LodgingBusinessSh> EXTENDS @<LocalBusiness> {
+  a [<LodgingBusiness>] ;
+  <audience> @<AudienceSh> * ;
+  <checkinTime> @<TimeSh> OR @<DateTimeSh> * ;
+  <petsAllowed> @<TextSh> OR @<BooleanSh> * ;
+  <availableLanguage> @<LanguageSh> OR @<TextSh> * ;
+  <amenityFeature> @<LocationFeatureSpecificationSh> * ;
+  <starRating> @<RatingSh> * ;
+  <checkoutTime> @<DateTimeSh> OR @<TimeSh> * ;
+  <numberOfRooms> @<QuantitativeValueSh> OR @<NumberSh> * ;
+}
+
+<AirportSh> EXTENDS @<CivicStructure> {
+  a [<Airport>] ;
+  <iataCode> @<TextSh> * ;
+  <icaoCode> @<TextSh> * ;
+}
+
+<EventStatusTypeSh> EXTENDS @<Enumeration> {
+  a [<EventStatusType>] ;
+}
+
+<TicketSh> EXTENDS @<Intangible> {
+  a [<Ticket>] ;
+  <underName> @<OrganizationSh> OR @<PersonSh> * ;
+  <totalPrice> @<TextSh> OR @<NumberSh> OR @<PriceSpecificationSh> * ;
+  <priceCurrency> @<TextSh> * ;
+  <ticketNumber> @<TextSh> * ;
+  <issuedBy> @<OrganizationSh> * ;
+  <ticketToken> @<URLSh> OR @<TextSh> * ;
+  <ticketedSeat> @<SeatSh> * ;
+  <dateIssued> @<DateSh> OR @<DateTimeSh> * ;
+}
+
+<CreativeWorkSeasonSh> EXTENDS @<CreativeWork> {
+  a [<CreativeWorkSeason>] ;
+  <actor> @<PersonSh> * ;
+  <partOfSeries> @<CreativeWorkSeriesSh> * ;
+  <numberOfEpisodes> @<IntegerSh> * ;
+  <trailer> @<VideoObjectSh> * ;
+  <endDate> @<DateSh> OR @<DateTimeSh> * ;
+  <episodes> @<EpisodeSh> * ;
+  <startDate> @<DateTimeSh> OR @<DateSh> * ;
+  <director> @<PersonSh> * ;
+  <productionCompany> @<OrganizationSh> * ;
+  <episode> @<EpisodeSh> * ;
+  <seasonNumber> @<TextSh> OR @<IntegerSh> * ;
+}
+
+<ReservationSh> EXTENDS @<Intangible> {
+  a [<Reservation>] ;
+  <provider> @<OrganizationSh> OR @<PersonSh> * ;
+  <programMembershipUsed> @<ProgramMembershipSh> * ;
+  <reservationStatus> @<ReservationStatusTypeSh> * ;
+  <underName> @<OrganizationSh> OR @<PersonSh> * ;
+  <bookingAgent> @<OrganizationSh> OR @<PersonSh> * ;
+  <totalPrice> @<TextSh> OR @<NumberSh> OR @<PriceSpecificationSh> * ;
+  <reservationFor> @<ThingSh> * ;
+  <priceCurrency> @<TextSh> * ;
+  <broker> @<OrganizationSh> OR @<PersonSh> * ;
+  <modifiedTime> @<DateTimeSh> * ;
+  <bookingTime> @<DateTimeSh> * ;
+  <reservationId> @<TextSh> * ;
+  <reservedTicket> @<TicketSh> * ;
+}
+
+<FindActionSh> EXTENDS @<Action> {
+  a [<FindAction>] ;
+}
+
+<RecyclingCenterSh> EXTENDS @<LocalBusiness> {
+  a [<RecyclingCenter>] ;
+}
+
+<HospitalSh> EXTENDS @<MedicalOrganization> @<CivicStructure> @<EmergencyService> {
+  a [<Hospital>] ;
+}
+
+<FestivalSh> EXTENDS @<Event> {
+  a [<Festival>] ;
+}
+
+<LockerDeliverySh> EXTENDS @<DeliveryMethod> {
+  a [<LockerDelivery>] ;
+}
+
+<BookmarkActionSh> EXTENDS @<OrganizeAction> {
+  a [<BookmarkAction>] ;
+}
+
+<RadioSeasonSh> EXTENDS @<CreativeWorkSeason> {
+  a [<RadioSeason>] ;
+}
+
+<UpdateActionSh> EXTENDS @<Action> {
+  a [<UpdateAction>] ;
+  <collection> @<ThingSh> * ;
+  <targetCollection> @<ThingSh> * ;
+}
+
+<AggregateRatingSh> EXTENDS @<Rating> {
+  a [<AggregateRating>] ;
+  <itemReviewed> @<ThingSh> * ;
+  <reviewCount> @<IntegerSh> * ;
+  <ratingCount> @<IntegerSh> * ;
+}
+
+<ReplyActionSh> EXTENDS @<CommunicateAction> {
+  a [<ReplyAction>] ;
+  <resultComment> @<CommentSh> * ;
+}
+
+<EmailMessageSh> EXTENDS @<Message> {
+  a [<EmailMessage>] ;
+}
+
+<BusStationSh> EXTENDS @<CivicStructure> {
+  a [<BusStation>] ;
+}
+
+<BowlingAlleySh> EXTENDS @<SportsActivityLocation> {
+  a [<BowlingAlley>] ;
+}
+
+<ImageGallerySh> EXTENDS @<CollectionPage> {
+  a [<ImageGallery>] ;
+}
+
+<OfferSh> EXTENDS @<Intangible> {
+  a [<Offer>] ;
+  <sku> @<TextSh> * ;
+  <availabilityStarts> @<DateSh> OR @<TimeSh> OR @<DateTimeSh> * ;
+  <availableDeliveryMethod> @<DeliveryMethodSh> * ;
+  <mpn> @<TextSh> * ;
+  <serialNumber> @<TextSh> * ;
+  <gtin8> @<TextSh> * ;
+  <availability> @<ItemAvailabilitySh> * ;
+  <priceSpecification> @<PriceSpecificationSh> * ;
+  <inventoryLevel> @<QuantitativeValueSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <eligibleTransactionVolume> @<PriceSpecificationSh> * ;
+  <availableAtOrFrom> @<PlaceSh> * ;
+  <reviews> @<ReviewSh> * ;
+  <priceCurrency> @<TextSh> * ;
+  <category> @<TextSh> OR @<ThingSh> OR @<PhysicalActivityCategorySh> * ;
+  <priceValidUntil> @<DateSh> * ;
+  <addOn> @<OfferSh> * ;
+  <warranty> @<WarrantyPromiseSh> * ;
+  <eligibleQuantity> @<QuantitativeValueSh> * ;
+  <validFrom> @<DateTimeSh> OR @<DateSh> * ;
+  <validThrough> @<DateSh> OR @<DateTimeSh> * ;
+  <price> @<TextSh> OR @<NumberSh> * ;
+  <gtin14> @<TextSh> * ;
+  <gtin13> @<TextSh> * ;
+  <gtin12> @<TextSh> * ;
+  <seller> @<PersonSh> OR @<OrganizationSh> * ;
+  <deliveryLeadTime> @<QuantitativeValueSh> * ;
+  <availabilityEnds> @<DateTimeSh> OR @<TimeSh> OR @<DateSh> * ;
+  <includesObject> @<TypeAndQuantityNodeSh> * ;
+  <review> @<ReviewSh> * ;
+  <businessFunction> @<BusinessFunctionSh> * ;
+  <eligibleCustomerType> @<BusinessEntityTypeSh> * ;
+  <itemCondition> @<OfferItemConditionSh> * ;
+  <itemOffered> @<ServiceSh> OR @<ProductSh> * ;
+  <offeredBy> @<OrganizationSh> OR @<PersonSh> * ;
+  <eligibleDuration> @<QuantitativeValueSh> * ;
+  <acceptedPaymentMethod> @<LoanOrCreditSh> OR @<PaymentMethodSh> * ;
+  <areaServed> @<TextSh> OR @<AdministrativeAreaSh> OR @<GeoShapeSh> OR @<PlaceSh> * ;
+  <eligibleRegion> @<PlaceSh> OR @<TextSh> OR @<GeoShapeSh> * ;
+  <advanceBookingRequirement> @<QuantitativeValueSh> * ;
+}
+
+<DataDownloadSh> EXTENDS @<MediaObject> {
+  a [<DataDownload>] ;
+}
+
+<ProductSh> EXTENDS @<Thing> {
+  a [<Product>] ;
+  <manufacturer> @<OrganizationSh> * ;
+  <sku> @<TextSh> * ;
+  <audience> @<AudienceSh> * ;
+  <mpn> @<TextSh> * ;
+  <height> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+  <gtin8> @<TextSh> * ;
+  <aggregateRating> @<AggregateRatingSh> * ;
+  <isConsumableFor> @<ProductSh> * ;
+  <reviews> @<ReviewSh> * ;
+  <offers> @<OfferSh> * ;
+  <award> @<TextSh> * ;
+  <category> @<TextSh> OR @<ThingSh> OR @<PhysicalActivityCategorySh> * ;
+  <width> @<DistanceSh> OR @<QuantitativeValueSh> * ;
+  <awards> @<TextSh> * ;
+  <additionalProperty> @<PropertyValueSh> * ;
+  <isAccessoryOrSparePartFor> @<ProductSh> * ;
+  <logo> @<ImageObjectSh> OR @<URLSh> * ;
+  <gtin14> @<TextSh> * ;
+  <gtin13> @<TextSh> * ;
+  <gtin12> @<TextSh> * ;
+  <material> @<URLSh> OR @<ProductSh> OR @<TextSh> * ;
+  <weight> @<QuantitativeValueSh> * ;
+  <depth> @<QuantitativeValueSh> OR @<DistanceSh> * ;
+  <isSimilarTo> @<ServiceSh> OR @<ProductSh> * ;
+  <model> @<ProductModelSh> OR @<TextSh> * ;
+  <color> @<TextSh> * ;
+  <isRelatedTo> @<ServiceSh> OR @<ProductSh> * ;
+  <productID> @<TextSh> * ;
+  <review> @<ReviewSh> * ;
+  <purchaseDate> @<DateSh> * ;
+  <itemCondition> @<OfferItemConditionSh> * ;
+  <productionDate> @<DateSh> * ;
+  <slogan> @<TextSh> * ;
+  <brand> @<BrandSh> OR @<OrganizationSh> * ;
+  <releaseDate> @<DateSh> * ;
+}
+
+<CampingPitchSh> EXTENDS @<Accommodation> {
+  a [<CampingPitch>] ;
+}
+
+<GeoCoordinatesSh> EXTENDS @<StructuredValue> {
+  a [<GeoCoordinates>] ;
+  <address> @<TextSh> OR @<PostalAddressSh> * ;
+  <latitude> @<TextSh> OR @<NumberSh> * ;
+  <longitude> @<NumberSh> OR @<TextSh> * ;
+  <addressCountry> @<CountrySh> OR @<TextSh> * ;
+  <postalCode> @<TextSh> * ;
+  <elevation> @<TextSh> OR @<NumberSh> * ;
+}
+
+<MiddleSchoolSh> EXTENDS @<EducationalOrganization> {
+  a [<MiddleSchool>] ;
+}
+
+<AutomotiveBusinessSh> EXTENDS @<LocalBusiness> {
+  a [<AutomotiveBusiness>] ;
+}
+
+<LiteraryEventSh> EXTENDS @<Event> {
+  a [<LiteraryEvent>] ;
+}
+
+<SocialEventSh> EXTENDS @<Event> {
+  a [<SocialEvent>] ;
+}
+
+<EatActionSh> EXTENDS @<ConsumeAction> {
+  a [<EatAction>] ;
+}
+
+<TheaterEventSh> EXTENDS @<Event> {
+  a [<TheaterEvent>] ;
+}
+
+<TakeActionSh> EXTENDS @<TransferAction> {
+  a [<TakeAction>] ;
+}
+
+<SportsEventSh> EXTENDS @<Event> {
+  a [<SportsEvent>] ;
+  <awayTeam> @<SportsTeamSh> OR @<PersonSh> * ;
+  <competitor> @<PersonSh> OR @<SportsTeamSh> * ;
+  <homeTeam> @<SportsTeamSh> OR @<PersonSh> * ;
+}
+
+<GamePlayModeSh> EXTENDS @<Enumeration> {
+  a [<GamePlayMode>] ;
+}
+
+<EBookSh> LITERAL
+
+<DigitalAudioTapeFormatSh> LITERAL
+
+<DamagedConditionSh> LITERAL
+
+<AlbumReleaseSh> LITERAL
+
+<SoldOutSh> LITERAL
+
+<OrderReturnedSh> LITERAL
+
+<LeftHandDrivingSh> LITERAL
+
+<PreOrderSh> LITERAL
+
+<RsvpResponseYesSh> LITERAL
+
+<SoundtrackAlbumSh> LITERAL
+
+<WednesdaySh> LITERAL
+
+<RefurbishedConditionSh> LITERAL
+
+<RemixAlbumSh> LITERAL
+
+<OrderProcessingSh> LITERAL
+
+<TimeSh> LITERAL
+
+<KosherDietSh> LITERAL
+
+<VeganDietSh> LITERAL
+
+<SundaySh> LITERAL
+
+<OutOfStockSh> LITERAL
+
+<OrderPickupAvailableSh> LITERAL
+
+<DiabeticDietSh> LITERAL
+
+<LiveAlbumSh> LITERAL
+
+<PotentialActionStatusSh> LITERAL
+
+<EPReleaseSh> LITERAL
+
+<BroadcastReleaseSh> LITERAL
+
+<RsvpResponseMaybeSh> LITERAL
+
+<HearingImpairedSupportedSh> LITERAL
+
+<MultiPlayerSh> LITERAL
+
+<ParkingMapSh> LITERAL
+
+<TextSh> LITERAL
+
+<ReadPermissionSh> LITERAL
+
+<PublicHolidaysSh> LITERAL
+
+<EventPostponedSh> LITERAL
+
+<EventRescheduledSh> LITERAL
+
+<DemoAlbumSh> LITERAL
+
+<CoOpSh> LITERAL
+
+<RightHandDrivingSh> LITERAL
+
+<PaymentCompleteSh> LITERAL
+
+<HinduDietSh> LITERAL
+
+<GlutenFreeDietSh> LITERAL
+
+<MondaySh> LITERAL
+
+<ReservationConfirmedSh> LITERAL
+
+<SingleReleaseSh> LITERAL
+
+<OrderProblemSh> LITERAL
+
+<TollFreeSh> LITERAL
+
+<NumberSh> LITERAL
+
+<HalalDietSh> LITERAL
+
+<VinylFormatSh> LITERAL
+
+<ItemListOrderDescendingSh> LITERAL
+
+<ReservationPendingSh> LITERAL
+
+<CassetteFormatSh> LITERAL
+
+<UsedConditionSh> LITERAL
+
+<FrontWheelDriveConfigurationSh> LITERAL
+
+<OfflinePermanentlySh> LITERAL
+
+<PaymentPastDueSh> LITERAL
+
+<FourWheelDriveConfigurationSh> LITERAL
+
+<MaleSh> LITERAL
+
+<SpokenWordAlbumSh> LITERAL
+
+<AudiobookFormatSh> LITERAL
+
+<OrderDeliveredSh> LITERAL
+
+<PaymentDueSh> LITERAL
+
+<FridaySh> LITERAL
+
+<WritePermissionSh> LITERAL
+
+<RsvpResponseNoSh> LITERAL
+
+<LaserDiscFormatSh> LITERAL
+
+<LowLactoseDietSh> LITERAL
+
+<BooleanSh> LITERAL
+
+<TuesdaySh> LITERAL
+
+<OfflineTemporarilySh> LITERAL
+
+<EventScheduledSh> LITERAL
+
+<PreSaleSh> LITERAL
+
+<InStockSh> LITERAL
+
+<VegetarianDietSh> LITERAL
+
+<AllWheelDriveConfigurationSh> LITERAL
+
+<ReservationCancelledSh> LITERAL
+
+<ZoneBoardingPolicySh> LITERAL
+
+<NewConditionSh> LITERAL
+
+<CompilationAlbumSh> LITERAL
+
+<StudioAlbumSh> LITERAL
+
+<LowCalorieDietSh> LITERAL
+
+<RearWheelDriveConfigurationSh> LITERAL
+
+<LimitedAvailabilitySh> LITERAL
+
+<EventCancelledSh> LITERAL
+
+<SeatingMapSh> LITERAL
+
+<OrderInTransitSh> LITERAL
+
+<DJMixAlbumSh> LITERAL
+
+<DigitalFormatSh> LITERAL
+
+<CDFormatSh> LITERAL
+
+<DiscontinuedSh> LITERAL
+
+<OnlineSh> LITERAL
+
+<OnlineFullSh> LITERAL
+
+<OnlineOnlySh> LITERAL
+
+<OnSitePickupSh> LITERAL
+
+<FailedActionStatusSh> LITERAL
+
+<GroupBoardingPolicySh> LITERAL
+
+<OrderCancelledSh> LITERAL
+
+<FemaleSh> LITERAL
+
+<InStoreOnlySh> LITERAL
+
+<SaturdaySh> LITERAL
+
+<DVDFormatSh> LITERAL
+
+<PaymentDeclinedSh> LITERAL
+
+<VenueMapSh> LITERAL
+
+<ResearcherSh> LITERAL
+
+<CommentPermissionSh> LITERAL
+
+<LowFatDietSh> LITERAL
+
+<LowSaltDietSh> LITERAL
+
+<TransitMapSh> LITERAL
+
+<DateTimeSh> LITERAL
+
+<CompletedActionStatusSh> LITERAL
+
+<ActiveActionStatusSh> LITERAL
+
+<OrderPaymentDueSh> LITERAL
+
+<PaymentAutomaticallyAppliedSh> LITERAL
+
+<ThursdaySh> LITERAL
+
+<HardcoverSh> LITERAL
+
+<DateSh> LITERAL
+
+<SinglePlayerSh> LITERAL
+
+<ItemListUnorderedSh> LITERAL
+
+<MixtapeAlbumSh> LITERAL
+
+<PaperbackSh> LITERAL
+
+<ItemListOrderAscendingSh> LITERAL
+
+<ReservationHoldSh> LITERAL
+
+<ChapterSh> .
+<GeospatialGeometrySh> .
+<DrugSh> .
+<DietarySupplementSh> .
+<MonetaryGrantSh> .
+<EducationalOccupationalProgramSh> .
+<EducationalOccupationalCredentialSh> .
+<ExchangeRateSpecificationSh> .
+<MoneyTransferSh> .
+<PhysicalActivitySh> .
+<PhysicalActivityCategorySh> .
+<DefinedTermSh> .
+<LinkRoleSh> .
+<TouristDestinationSh> .
+<TouristTripSh> .
+<HealthInsurancePlanSh> .
+<AudiobookSh> .
+<WorkBasedProgramSh> .
+<CategoryCodeSh> .
+<CssSelectorTypeSh> .
+<GrantSh> .
+<MedicalStudySh> .
+<XPathTypeSh> .
+

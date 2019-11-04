@@ -1,0 +1,131 @@
+#!/usr/bin/env node
+
+const includeComments = false
+
+const fs = require('fs')
+const Ns_schemaOrg = 'http://schema.org/'
+const Ns_rdfs = 'http://www.w3.org/2000/01/rdf-schema#'
+const shapeSuffix = 'Sh'
+const base = Ns_schemaOrg
+
+const shexc = ldToShExC(JSON.parse(fs.readFileSync(process.argv[2], 'utf8')))
+console.log(shexc)
+
+function ldToShExC (ld) {
+  const prefixPairs = parsePrefixes(ld['@context'] || {})
+  const prefixDecls = prefixPairs.map(p => `PREFIX ${p.prefix}: <${p.namespace}>`)
+  const schemaPrefix = findPrefix(Ns_schemaOrg)
+
+  // parse structure
+  const {classes, properties, classProperties, ncs, needed} = ld['@graph'].reduce((acc, entry) => {
+    const id = entry['@id']
+    switch (entry['@type']) {
+    case 'rdf:Property':
+      if (id in acc.properties)
+        throw Error(`Property ${id} already defined as ${acc.properties[id]}`)
+      acc.properties[id] = entry
+
+      const domains = getProperty(entry, 'domainIncludes')
+      if (domains)
+        (domains instanceof Array ? domains : [domains])
+        .map(cObj => cObj['@id']).forEach(c => {
+          addValueArray(acc.classProperties, c, id)
+          addValueArray(acc.needed, c, entry)
+        })
+
+      const ranges = getProperty(entry, 'rangeIncludes')
+      if (ranges)
+        entry.valueExpr = (ranges instanceof Array ? ranges : [ranges])
+        .map(cObj => cObj['@id']).map(c => {
+          addValueArray(acc.needed, c, entry)
+          return `@${shorten(c + shapeSuffix)}`
+        }).join(' OR ')
+      else
+        entry.valueExpr = '.'
+
+      return acc
+    case 'rdfs:Class':
+      if (id in acc.classes) throw Error(`Class ${id} already defined as ${acc.classes[id]}`)
+      acc.classes[id] = entry
+      return acc
+    case 'http://schema.org/Boolean':
+      return acc
+    default:
+      if (!(id.startsWith(Ns_schemaOrg)))
+        throw Error(`What is this?: ${JSON.stringify(entry)}`)
+      acc.ncs[id] = entry
+      return acc
+    }
+  }, {classes: {}, properties: {}, classProperties: {}, ncs: {}, needed: {}})
+
+  Object.keys(classes).forEach(k => delete needed[k])
+  Object.keys(ncs).forEach(k => delete needed[k])
+  console.warn(`missing ${Object.keys(needed).length} entities: `, Object.keys(needed))
+
+  // generate ShExC
+  const shapeDecls = Object.keys(classes).map(classId => `${shorten(classId + shapeSuffix)} ${extendStr(classes[classId])}{
+  a [${shorten(classId)}] ;
+${(classProperties[classId] || []).map(p => `  ${shorten(p)} ${properties[p].valueExpr} *${comment('\n      ', properties[p])} ;\n`).join('')}}${comment(' ', classes[classId])}`)
+
+  const ncDecls = Object.keys(ncs).map(ncId => `${shorten(ncId + shapeSuffix)} LITERAL${comment(' ', ncs[ncId])}`)
+
+  return prefixDecls.join('\n')
+    + `\nBASE <${base}>`
+    + '\n\n'
+    + shapeDecls.join('\n\n')
+    + '\n\n'
+    + ncDecls.join('\n\n')
+    + '\n\n'
+    + Object.keys(needed).map(n => `${shorten(n + shapeSuffix)} .\n`).join('')
+
+  function extendStr (classDecl) {
+    const parents = classDecl['rdfs:subClassOf']
+    if (!parents)
+      return ''
+    return 'EXTENDS ' + ((parents instanceof Array ? parents : [parents]).map(p => `@${shorten(p['@id'])}`).join(' ')) + ' '
+  }
+
+  function comment (lead, entry) {
+    return includeComments ? literalAnnot(' ', Ns_rdfs + 'comment', entry['rdfs:comment']) : ''
+  }
+
+  function literalAnnot (lead, prop, annot) {
+    return annot ? `${lead}// ${shorten(prop)} '''${annot}'''` : ''
+  }
+  
+  function getProperty (entry, prop) {
+    return entry[Ns_schemaOrg + prop] || entry[schemaPrefix + ':' + prop]
+  }
+
+  function parsePrefixes (prefixes) {
+    return Object.keys(prefixes).reduce((acc, p) => acc.concat([{
+      prefix: p,
+      namespace: prefixes[p]
+    }]), [])
+  }
+
+  function findPrefix (ns) {
+    const found = prefixPairs.find(pair => pair.namespace === ns)
+    return found ? found.prefix : null
+  }
+
+  function shorten (uri) {
+    const candidates = prefixPairs.filter(pair => uri.startsWith(pair.namespace))
+    for (const candidate of candidates) {
+      const rest = uri.substr(candidate.namespace.length)
+      if (rest.match(/^[a-zA-Z0-9_.-]*$/))
+        return candidate.prefix + rest
+    }
+    if (uri.startsWith(base))
+      uri = uri.substr(base.length)
+    return `<${uri}>`
+  }
+
+  function addValueArray(obj, key, value) {
+    if (!(key in obj))
+      obj[key] = []
+    obj[key].push(value)
+  }
+}
+
+
